@@ -1,6 +1,9 @@
 import { Link } from 'react-router-dom';
+import { mockStandingsData } from '../data/mockStandings';
 
 export default function Home() {
+  const topCompetitors = mockStandingsData.slice(0, 6);
+
   return (
     <>
       <section style={{ textAlign: 'center', padding: '4rem 0' }}>
@@ -11,6 +14,37 @@ export default function Home() {
         <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }} className="animate-fade-up delay-200">
           <Link to="/registration" className="btn btn-primary">Register Now</Link>
           <Link to="/standings" className="btn btn-secondary">View Leaderboard</Link>
+        </div>
+      </section>
+
+      <section className="animate-fade-up delay-300" style={{ marginBottom: '4rem' }}>
+        <h2 className="page-title" style={{ fontSize: '2rem', marginBottom: '1.5rem', textAlign: 'center' }}>Current Season Top 6</h2>
+        <div className="table-container">
+          <table>
+            <thead>
+              <tr>
+                <th>Rank</th>
+                <th>Username</th>
+                <th>Total Points</th>
+              </tr>
+            </thead>
+            <tbody>
+              {topCompetitors.map((competitor, index) => {
+                let rankClass = '';
+                if (index === 0) rankClass = 'rank-1';
+                else if (index === 1) rankClass = 'rank-2';
+                else if (index === 2) rankClass = 'rank-3';
+                
+                return (
+                  <tr key={index}>
+                    <td><div className={`rank-badge ${rankClass}`}>{index + 1}</div></td>
+                    <td style={{ fontWeight: 600 }}>{competitor.username}</td>
+                    <td className="score">{competitor.totalPoints}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
         </div>
       </section>
 
