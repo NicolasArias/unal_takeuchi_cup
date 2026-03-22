@@ -1,0 +1,35 @@
+# Project Configuration and Gemini CLI
+GEMINI.md
+.gemini/
+
+# IDEs and Editors
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Dependencies (Common in web/front-end projects)
+node_modules/
+jspm_packages/
+.pnp/
+.pnp.js
+
+# Build and Output
+dist/
+build/
+out/
+*.log
+*.tmp
+*.bak
+
+# Environment Variables and Secrets
+.env
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+*.pem
+
+# System Files
+Thumbs.db
+.DS_Store
