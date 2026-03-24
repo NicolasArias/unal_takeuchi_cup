@@ -29,8 +29,8 @@ export default function Rules() {
       answer: (
         <>
           No, en general deben usar las reglas de la plataforma, estas las pueden leer en los siguientes enlaces:{" "}
-          <a href="https://atcoder.jp/posts/1075" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary)', textDecoration: 'underline' }}>Rules</a> y{" "}
-          <a href="https://atcoder.jp/posts/1195" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary)', textDecoration: 'underline' }}>AI-Rules</a>.
+          <a href="https://atcoder.jp/contests/abs/rules" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary)', textDecoration: 'underline' }}>Rules</a> y{" "}
+          <a href="https://info.atcoder.jp/entry/llm-rules-en" target="_blank" rel="noopener noreferrer" style={{ color: 'var(--primary)', textDecoration: 'underline' }}>AI-Rules</a>.
         </>
       )
     },
