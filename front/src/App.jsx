@@ -15,11 +15,11 @@ function App() {
             Copa Takeuchi
           </NavLink>
           <ul className="nav-links">
-            <li><NavLink to="/" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>Home</NavLink></li>
-            <li><NavLink to="/standings" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>Standings</NavLink></li>
-            <li><NavLink to="/rules" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>Rules</NavLink></li>
-            <li><NavLink to="/about" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>About</NavLink></li>
-            <li><NavLink to="/registration" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>Registration</NavLink></li>
+            <li><NavLink to="/" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>Inicio</NavLink></li>
+            <li><NavLink to="/standings" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>Clasificación</NavLink></li>
+            <li><NavLink to="/rules" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>Reglas</NavLink></li>
+            <li><NavLink to="/about" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>Acerca de</NavLink></li>
+            <li><NavLink to="/registration" className={({ isActive }) => `nav-link ${isActive ? 'active' : ''}`}>Registro</NavLink></li>
           </ul>
         </div>
       </nav>
