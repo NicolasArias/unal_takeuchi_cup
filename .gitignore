@@ -1,5 +1,5 @@
 # Project Configuration and Gemini CLI
-.gemini/
+# .gemini/ is now tracked to store project-specific mandates.
 
 # IDEs and Editors
 .vscode/
