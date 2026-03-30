@@ -7,6 +7,11 @@ on:
         description: 'AtCoder Contest ID (e.g., abc340)'
         required: true
         type: string
+      active_season:
+        description: 'Season Name (e.g., Season 2025-II or Season 2026-I)'
+        required: true
+        default: 'Season 2025-II'
+        type: string
 
 jobs:
   update-standings:
@@ -24,7 +29,7 @@ jobs:
           node-version: '20'
 
       - name: Run standings updater script
-        run: node backend/updateStandings.js ${{ github.event.inputs.contest_id }}
+        run: node backend/updateStandings.js ${{ github.event.inputs.contest_id }} "${{ github.event.inputs.active_season }}"
         env:
           # You can add your SHEET_CSV_URL in repository secrets
           SHEET_CSV_URL: ${{ secrets.SHEET_CSV_URL || '' }}
@@ -33,9 +38,9 @@ jobs:
         run: |
           git config --global user.name "github-actions[bot]"
           git config --global user.email "github-actions[bot]@users.noreply.github.com"
-          git add front/src/data/mockStandings.js
+          git add front/src/data/seasons/*.json front/src/data/mockStandings.js
           if ! git diff-index --quiet HEAD; then
-            git commit -m "chore(standings): update standings for contest ${{ github.event.inputs.contest_id }}"
+            git commit -m "chore(standings): update ${{ github.event.inputs.active_season }} for contest ${{ github.event.inputs.contest_id }}"
             git push
           else
             echo "No changes detected. Nothing to commit."
