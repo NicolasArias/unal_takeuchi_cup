@@ -47,7 +47,18 @@ export default function Standings() {
                 <tr key={index} className="animate-fade-up" style={{ animationDelay: `${index * 100}ms` }}>
                   <td><div className={`rank-badge ${rankClass}`}>{index + 1}</div></td>
                   <td>
-                    <div style={{ fontWeight: 600 }}>{row.username}</div>
+                    <div style={{ fontWeight: 600 }}>
+                      <a 
+                        href={`https://atcoder.jp/users/${row.username}`} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        style={{ color: '#646cff', textDecoration: 'none' }}
+                        onMouseOver={(e) => e.target.style.textDecoration = 'underline'}
+                        onMouseOut={(e) => e.target.style.textDecoration = 'none'}
+                      >
+                        {row.username}
+                      </a>
+                    </div>
                   </td>
                   <td className="score">{row.totalPoints}</td>
                   {row.stages.map((stageScore, i) => (

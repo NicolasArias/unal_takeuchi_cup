@@ -10,13 +10,14 @@ export default function Home() {
   return (
     <>
       <section style={{ textAlign: 'center', padding: '4rem 0' }}>
-        <h1 className="page-title">Copa Takeuchi UNAL</h1>
+        <h1 className="page-title">COPA TAKEUCHI de Programación Competitiva</h1>
         <p className="page-subtitle" style={{ margin: '0 auto 2rem' }}>
-          La principal liga de programación competitiva para estudiantes de la Universidad Nacional de Colombia. ¡Entrena, compite y sube en la tabla de posiciones en la serie AtCoder Beginner Contest!
+          ¡Demuestra tu talento y acepta el reto! Una iniciativa de Búhos ICPC creada para motivar e integrar a nuevos estudiantes en el apasionante mundo de los algoritmos.
         </p>
-        <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }} className="animate-fade-up delay-200">
-          <Link to="/registration" className="btn btn-primary">Regístrate ahora</Link>
-          <Link to="/standings" className="btn btn-secondary">Ver tabla de posiciones</Link>
+        <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }} className="animate-fade-up delay-200">
+          <Link to="/registration" className="btn btn-primary">¡Inscríbete!</Link>
+          <Link to="/rules" className="btn btn-secondary">Revisa el FAQ</Link>
+          <Link to="/standings" className="btn btn-secondary">Tabla de posiciones</Link>
         </div>
       </section>
 
@@ -52,7 +53,18 @@ export default function Home() {
                 return (
                   <tr key={index}>
                     <td><div className={`rank-badge ${rankClass}`}>{index + 1}</div></td>
-                    <td style={{ fontWeight: 600 }}>{competitor.username}</td>
+                    <td style={{ fontWeight: 600 }}>
+                      <a 
+                        href={`https://atcoder.jp/users/${competitor.username}`} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        style={{ color: '#646cff', textDecoration: 'none' }}
+                        onMouseOver={(e) => e.target.style.textDecoration = 'underline'}
+                        onMouseOut={(e) => e.target.style.textDecoration = 'none'}
+                      >
+                        {competitor.username}
+                      </a>
+                    </td>
                     <td className="score">{competitor.totalPoints}</td>
                   </tr>
                 );

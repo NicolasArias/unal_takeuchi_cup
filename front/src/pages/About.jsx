@@ -3,23 +3,26 @@ export default function About() {
     <>
       <div>
         <h1 className="page-title">Acerca de la Copa</h1>
-        <p className="page-subtitle">Honrando un legado de programación competitiva en la UNAL.</p>
+        <p className="page-subtitle">Homenaje a un puente de conocimiento.</p>
       </div>
 
       <div className="card animate-fade-up delay-100">
-        <h2 style={{ marginBottom: '1rem' }}>El legado del profesor Takeuchi</h2>
-        <p style={{ color: 'var(--text-muted)', marginBottom: '2rem' }}>
-          El profesor Yu Takeuchi fue un matemático y educador visionario que impactó significativamente el desarrollo académico en la Universidad Nacional de Colombia. Inculcó una profunda pasión por la resolución de problemas y el pensamiento analítico entre generaciones de estudiantes.
+        <h2 style={{ marginBottom: '1rem' }}>¿Por qué "COPA TAKEUCHI"?</h2>
+        <p style={{ color: 'var(--text-muted)', marginBottom: '1rem', lineHeight: '1.6' }}>
+          Este torneo rinde homenaje al fructífero intercambio académico entre Colombia y Japón, un puente de conocimiento que enriqueció profundamente a nuestra universidad. Como símbolo de este legado, honramos la memoria del profesor Yu Takeuchi, un matemático japonés que dedicó su vida a la educación en Colombia.
+        </p>
+        <p style={{ color: 'var(--text-muted)', marginBottom: '2rem', lineHeight: '1.6' }}>
+          El Profesor Takeuchi fue un pilar fundamental de este intercambio, reconocido por su generosidad y dedicación absoluta hacia sus estudiantes. Su labor fue tan influyente que fue distinguido como el japonés más importante en la historia de las relaciones entre ambos países.
         </p>
 
-        <h2 style={{ marginBottom: '1rem' }}>Nuestra Misión</h2>
-        <p style={{ color: 'var(--text-muted)', marginBottom: '2rem' }}>
-          La Copa Takeuchi UNAL tiene como objetivo revivir y fomentar la comunidad de programación competitiva dentro de la universidad. Al estructurar una liga a largo plazo en torno a concursos de AtCoder de alta calidad, proporcionamos a los estudiantes una motivación constante para practicar, mejorar y representar a la universidad en competencias internacionales como el ICPC.
+        <h2 style={{ marginBottom: '1rem' }}>Competimos en AtCoder: Continuando con el legado</h2>
+        <p style={{ color: 'var(--text-muted)', marginBottom: '2rem', lineHeight: '1.6' }}>
+          Para mantener viva la esencia de este intercambio, el torneo se realizará en la plataforma AtCoder, creada en Japón. Es nuestra forma de conectar el espíritu de colaboración pasado con la vanguardia competitiva actual.
         </p>
 
         <h2 style={{ marginBottom: '1rem' }}>Contáctanos</h2>
         <p style={{ color: 'var(--text-muted)' }}>
-          Para preguntas o consultas de patrocinio, comunícate con el Club de Programación Competitiva de la UNAL en <a href="mailto:cpclub@unal.edu.co" style={{ color: 'var(--primary-color)' }}>cpclub@unal.edu.co</a>.
+          Para preguntas o consultas, comunícate con Búhos ICPC, el grupo de programación competitiva de la UNAL en <a href="mailto:cpclub@unal.edu.co" style={{ color: 'var(--primary-color)' }}>cpclub@unal.edu.co</a>.
         </p>
       </div>
     </>
