@@ -8,26 +8,15 @@ export default function Standings() {
 
   return (
     <>
-      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '2rem', marginBottom: '3rem' }}>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '1rem', marginBottom: '2rem' }}>
         <div>
-          <h1 className="page-title animate-flicker" style={{ margin: 0, textAlign: 'left' }}>Clasificación Global</h1>
-          <p className="page-subtitle" style={{ margin: 0, marginTop: '0.5rem', textAlign: 'left' }}>Tabla de posiciones actual en todas las etapas de AtCoder.</p>
+          <h1 className="page-title" style={{ margin: 0 }}>Clasificación Global</h1>
+          <p className="page-subtitle" style={{ margin: 0, marginTop: '0.5rem' }}>Tabla de posiciones actual en todas las etapas de AtCoder.</p>
         </div>
         <select 
           value={selectedSeason} 
           onChange={(e) => setSelectedSeason(e.target.value)}
-          style={{ 
-            fontSize: '1rem', 
-            padding: '0.6rem 1.2rem', 
-            borderRadius: '2px', 
-            backgroundColor: 'rgba(5, 5, 8, 0.9)', 
-            color: 'var(--neon-green)', 
-            border: '2px solid var(--neon-green)', 
-            boxShadow: '0 0 10px var(--neon-green)',
-            cursor: 'pointer',
-            fontFamily: 'var(--font-header)',
-            textTransform: 'uppercase'
-          }}
+          style={{ fontSize: '1.2rem', padding: '0.5rem 1rem', borderRadius: '4px', backgroundColor: '#1e1e1e', color: 'white', border: '1px solid #333', cursor: 'pointer' }}
         >
           {seasons.map(season => (
             <option key={season} value={season}>{season}</option>
@@ -35,13 +24,7 @@ export default function Standings() {
         </select>
       </div>
 
-      <div style={{ display: 'flex', justifyContent: 'flex-end', marginBottom: '0.8rem' }}>
-        <span style={{ color: 'var(--neon-green)', fontSize: '0.9rem', letterSpacing: '1px', textShadow: '0 0 5px var(--neon-green)' }}>
-          ➡️ Desliza a la derecha para ver más etapas
-        </span>
-      </div>
-
-      <div className="table-container animate-fade-up delay-300">
+      <div className="table-container animate-fade-up delay-100">
         <table>
           <thead>
             <tr>
@@ -69,15 +52,9 @@ export default function Standings() {
                         href={`https://atcoder.jp/users/${row.username}`} 
                         target="_blank" 
                         rel="noopener noreferrer" 
-                        style={{ color: 'var(--neon-cyan)', textDecoration: 'none', transition: 'all 0.3s' }}
-                        onMouseOver={(e) => {
-                          e.target.style.textDecoration = 'underline';
-                          e.target.style.textShadow = '0 0 8px var(--neon-cyan)';
-                        }}
-                        onMouseOut={(e) => {
-                          e.target.style.textDecoration = 'none';
-                          e.target.style.textShadow = 'none';
-                        }}
+                        style={{ color: '#646cff', textDecoration: 'none' }}
+                        onMouseOver={(e) => e.target.style.textDecoration = 'underline'}
+                        onMouseOut={(e) => e.target.style.textDecoration = 'none'}
                       >
                         {row.username}
                       </a>
