@@ -40,7 +40,11 @@ export default function Rules() {
     },
     {
       question: "¿Hay alguna condición adicional?",
-      answer: "Sí, para garantizar una competencia entre los principiantes e intermedios sólo participan por el premio aquellos que tengan un rating máximo en Codeforces menor a Specialist. Si no tienes cuenta en Codeforces, puedes participar también."
+      answer: "Sí, para garantizar una competencia entre los principiantes e intermedios sólo participan por el premio aquellos que tengan un rating máximo en Codeforces menor a Expert. Si no tienes cuenta en Codeforces, puedes participar también."
+    },
+    {
+      question: "¿Cómo me inscribo?",
+      answer: "La inscripción se realiza a través de un formulario de Google específico para cada temporada. Es obligatorio iniciar sesión con tu correo institucional de la UNAL (@unal.edu.co) para acceder y completar el formulario."
     }
   ];
 
