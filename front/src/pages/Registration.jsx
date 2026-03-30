@@ -6,14 +6,14 @@ export default function Registration() {
 
   return (
     <>
-      <div style={{ textAlign: 'center', marginBottom: '3rem' }}>
-        <h1 className="page-title">Registro</h1>
+      <div className="page-header">
+        <h1 className="page-title animate-flicker">Registro</h1>
         <p className="page-subtitle">Forma parte de la historia de la Copa Takeuchi.</p>
       </div>
 
-      <div className="card animate-fade-up delay-100" style={{ maxWidth: '700px', margin: '0 auto', textAlign: 'center', padding: '3rem' }}>
+      <div className="card animate-fade-up delay-100">
         <div style={{ marginBottom: '2rem' }}>
-          <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="var(--primary)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" style={{ marginBottom: '1.5rem' }}>
+          <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="neon-icon-pink" style={{ marginBottom: '1.5rem' }}>
             <path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M22 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
           </svg>
           <h2 style={{ marginBottom: '1rem' }}>Inscríbete a la COPA TAKEUCHI</h2>
@@ -31,8 +31,7 @@ export default function Registration() {
           style={{ 
             fontSize: '1.2rem', 
             padding: '1rem 3rem', 
-            display: 'inline-block',
-            boxShadow: '0 4px 14px 0 rgba(var(--primary-rgb), 0.39)'
+            display: 'inline-block'
           }}
         >
           Ir al Formulario de Registro
