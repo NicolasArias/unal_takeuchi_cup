@@ -47,7 +47,7 @@ export default function Rules() {
   return (
     <>
       <div className="animate-fade-in">
-        <h1 className="page-title">Preguntas Frecuentes (FAQ)</h1>
+        <h1 className="page-title animate-flicker">Preguntas Frecuentes (FAQ)</h1>
         <p className="page-subtitle">Todo lo que necesitas saber sobre la Copa Takeuchi.</p>
       </div>
 
@@ -58,7 +58,7 @@ export default function Rules() {
             className="card animate-fade-up" 
             style={{ animationDelay: `${(index + 1) * 100}ms` }}
           >
-            <h3 style={{ color: 'var(--primary)', marginBottom: '0.75rem', fontSize: '1.25rem' }}>
+            <h3 style={{ color: 'var(--neon-cyan)', marginBottom: '0.75rem', fontSize: '1.25rem', textShadow: '0 0 5px var(--neon-cyan)' }}>
               {item.question}
             </h3>
             <p style={{ color: 'var(--text-muted)', lineHeight: '1.6' }}>
@@ -68,14 +68,14 @@ export default function Rules() {
         ))}
       </div>
 
-      <div className="card animate-fade-up" style={{ marginTop: '2rem', textAlign: 'center', backgroundColor: 'rgba(var(--primary-rgb), 0.1)', border: '1px solid var(--primary)' }}>
-        <p style={{ margin: 0 }}>
+      <div className="card animate-fade-up" style={{ marginTop: '2rem', textAlign: 'center', border: '2px solid var(--neon-pink)', boxShadow: '0 0 15px var(--neon-pink)' }}>
+        <p style={{ margin: 0, fontFamily: 'var(--font-header)', letterSpacing: '1px' }}>
           Recuerden seguirnos en nuestro Instagram{" "}
           <a 
             href="https://www.instagram.com/buhos_icpcun" 
             target="_blank" 
             rel="noopener noreferrer"
-            style={{ fontWeight: 'bold', color: 'var(--primary)', textDecoration: 'none' }}
+            style={{ fontWeight: 'bold', color: 'var(--neon-cyan)', textDecoration: 'none', textShadow: '0 0 5px var(--neon-cyan)' }}
           >
             @buhos_icpcun
           </a>{" "}

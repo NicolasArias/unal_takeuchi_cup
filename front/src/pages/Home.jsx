@@ -10,23 +10,35 @@ export default function Home() {
   return (
     <>
       <section style={{ textAlign: 'center', padding: '4rem 0' }}>
-        <h1 className="page-title">Copa Takeuchi UNAL</h1>
+        <h1 className="page-title animate-flicker">COPA TAKEUCHI de Programación Competitiva</h1>
         <p className="page-subtitle" style={{ margin: '0 auto 2rem' }}>
-          La principal liga de programación competitiva para estudiantes de la Universidad Nacional de Colombia. ¡Entrena, compite y sube en la tabla de posiciones en la serie AtCoder Beginner Contest!
+          ¡Demuestra tu talento y acepta el reto! Una iniciativa de Búhos ICPC creada para motivar e integrar a nuevos estudiantes en el apasionante mundo de los algoritmos.
         </p>
-        <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center' }} className="animate-fade-up delay-200">
-          <Link to="/registration" className="btn btn-primary">Regístrate ahora</Link>
-          <Link to="/standings" className="btn btn-secondary">Ver tabla de posiciones</Link>
+        <div style={{ display: 'flex', gap: '1.5rem', justifyContent: 'center', flexWrap: 'wrap' }} className="animate-fade-up">
+          <Link to="/registration" className="btn btn-primary">¡Inscríbete!</Link>
+          <Link to="/rules" className="btn btn-secondary">Revisa el FAQ</Link>
+          <Link to="/standings" className="btn btn-secondary">Tabla de posiciones</Link>
         </div>
       </section>
 
       <section className="animate-fade-up delay-300" style={{ marginBottom: '4rem' }}>
-        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '1rem', marginBottom: '1.5rem', flexWrap: 'wrap' }}>
-          <h2 className="page-title" style={{ fontSize: '2rem', margin: 0 }}>Top 6</h2>
+        <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', gap: '1.5rem', marginBottom: '2.5rem', flexWrap: 'wrap' }}>
+          <h2 style={{ fontSize: '2rem', margin: 0, color: 'var(--neon-cyan)', textShadow: '0 0 10px var(--neon-cyan)' }}>Top 6</h2>
           <select 
             value={selectedSeason} 
             onChange={(e) => setSelectedSeason(e.target.value)}
-            style={{ fontSize: '1.2rem', padding: '0.5rem 1rem', borderRadius: '4px', backgroundColor: '#1e1e1e', color: 'white', border: '1px solid #333', cursor: 'pointer' }}
+            style={{ 
+              fontSize: '1rem', 
+              padding: '0.6rem 1.2rem', 
+              borderRadius: '2px', 
+              backgroundColor: 'rgba(5, 5, 8, 0.9)', 
+              color: 'var(--neon-green)', 
+              border: '2px solid var(--neon-green)', 
+              boxShadow: '0 0 10px var(--neon-green)',
+              cursor: 'pointer',
+              fontFamily: 'var(--font-header)',
+              textTransform: 'uppercase'
+            }}
           >
             {seasons.map(season => (
               <option key={season} value={season}>{season}</option>
@@ -52,7 +64,24 @@ export default function Home() {
                 return (
                   <tr key={index}>
                     <td><div className={`rank-badge ${rankClass}`}>{index + 1}</div></td>
-                    <td style={{ fontWeight: 600 }}>{competitor.username}</td>
+                    <td style={{ fontWeight: 600 }}>
+                      <a 
+                        href={`https://atcoder.jp/users/${competitor.username}`} 
+                        target="_blank" 
+                        rel="noopener noreferrer" 
+                        style={{ color: 'var(--neon-cyan)', textDecoration: 'none', transition: 'all 0.3s' }}
+                        onMouseOver={(e) => {
+                          e.target.style.textDecoration = 'underline';
+                          e.target.style.textShadow = '0 0 8px var(--neon-cyan)';
+                        }}
+                        onMouseOut={(e) => {
+                          e.target.style.textDecoration = 'none';
+                          e.target.style.textShadow = 'none';
+                        }}
+                      >
+                        {competitor.username}
+                      </a>
+                    </td>
                     <td className="score">{competitor.totalPoints}</td>
                   </tr>
                 );
