@@ -58,10 +58,14 @@ function rebuildIndexFile(seasonsDir, mockStandingsPath) {
     let exportStr = 'export const mockStandingsData = {\n';
     
     files.forEach(file => {
-        const seasonName = path.basename(file, '.json');
-        const safeName = seasonName.replace(/\W/g, '');
-        importsStr += `import ${safeName} from './seasons/${file}';\n`;
-        exportStr += `  "${seasonName}": ${safeName},\n`;
+        const fileName = path.basename(file, '.json');
+        // The display name should have spaces for the UI select, 
+        // but we'll use the filename as the key which now uses underscores.
+        const displayName = fileName.replace(/_/g, ' ');
+        const safeVarName = fileName.replace(/\W/g, '');
+        
+        importsStr += `import ${safeVarName} from './seasons/${file}';\n`;
+        exportStr += `  "${displayName}": ${safeVarName},\n`;
     });
     
     exportStr += '};\n';
@@ -70,6 +74,8 @@ function rebuildIndexFile(seasonsDir, mockStandingsPath) {
 }
 
 async function updateStandings(contestId, activeSeason) {
+    // Ensure the safe filename for storage
+    const safeSeasonName = activeSeason.replace(/\s+/g, '_');
     console.log(`Starting standings update for AtCoder contest: ${contestId} on season: ${activeSeason}`);
     
     // 1. Fetch Contestants Map
@@ -105,7 +111,7 @@ async function updateStandings(contestId, activeSeason) {
     const seasonsDir = path.join(process.cwd(), 'front', 'src', 'data', 'seasons');
     if (!fs.existsSync(seasonsDir)) fs.mkdirSync(seasonsDir, { recursive: true });
     
-    const filePath = path.join(seasonsDir, `${activeSeason}.json`);
+    const filePath = path.join(seasonsDir, `${safeSeasonName}.json`);
     let seasonData = [];
     if (fs.existsSync(filePath)) {
         seasonData = JSON.parse(fs.readFileSync(filePath, 'utf-8'));
