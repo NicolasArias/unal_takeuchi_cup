@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 
 export default function Registration() {
   // Replace with the actual Google Form link when available
-  const googleFormUrl = "https://forms.gle/PLACEHOLDER"; 
+  const googleFormUrl = "https://docs.google.com/forms/d/e/1FAIpQLSfRPEFmxR-LLK6Y13GtzVVU3Diux-VUnkcl4rqRl2wYjUs0dg/viewform?usp=sharing&ouid=112318199822184330067"; 
 
   return (
     <>
