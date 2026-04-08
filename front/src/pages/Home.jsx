@@ -45,50 +45,77 @@ export default function Home() {
             ))}
           </select>
         </div>
-        <div className="table-container">
-          <table>
-            <thead>
-              <tr>
-                <th>Posición</th>
-                <th>Usuario</th>
-                <th>Puntaje Total</th>
-              </tr>
-            </thead>
-            <tbody>
-              {topCompetitors.map((competitor, index) => {
-                let rankClass = '';
-                if (index === 0) rankClass = 'rank-1';
-                else if (index === 1) rankClass = 'rank-2';
-                else if (index === 2) rankClass = 'rank-3';
-                
-                return (
-                  <tr key={index}>
-                    <td><div className={`rank-badge ${rankClass}`}>{index + 1}</div></td>
-                    <td style={{ fontWeight: 600 }}>
-                      <a 
-                        href={`https://atcoder.jp/users/${competitor.username}`} 
-                        target="_blank" 
-                        rel="noopener noreferrer" 
-                        style={{ color: 'var(--neon-cyan)', textDecoration: 'none', transition: 'all 0.3s' }}
-                        onMouseOver={(e) => {
-                          e.target.style.textDecoration = 'underline';
-                          e.target.style.textShadow = '0 0 8px var(--neon-cyan)';
-                        }}
-                        onMouseOut={(e) => {
-                          e.target.style.textDecoration = 'none';
-                          e.target.style.textShadow = 'none';
-                        }}
-                      >
-                        {competitor.username}
-                      </a>
-                    </td>
-                    <td className="score">{competitor.totalPoints}</td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
+        {topCompetitors && topCompetitors.length > 0 ? (
+          <div className="table-container">
+            <table>
+              <thead>
+                <tr>
+                  <th>Posición</th>
+                  <th>Usuario</th>
+                  <th>Puntaje Total</th>
+                </tr>
+              </thead>
+              <tbody>
+                {topCompetitors.map((competitor, index) => {
+                  let rankClass = '';
+                  if (index === 0) rankClass = 'rank-1';
+                  else if (index === 1) rankClass = 'rank-2';
+                  else if (index === 2) rankClass = 'rank-3';
+                  
+                  return (
+                    <tr key={index}>
+                      <td><div className={`rank-badge ${rankClass}`}>{index + 1}</div></td>
+                      <td style={{ fontWeight: 600 }}>
+                        <a 
+                          href={`https://atcoder.jp/users/${competitor.username}`} 
+                          target="_blank" 
+                          rel="noopener noreferrer" 
+                          style={{ color: 'var(--neon-cyan)', textDecoration: 'none', transition: 'all 0.3s' }}
+                          onMouseOver={(e) => {
+                            e.target.style.textDecoration = 'underline';
+                            e.target.style.textShadow = '0 0 8px var(--neon-cyan)';
+                          }}
+                          onMouseOut={(e) => {
+                            e.target.style.textDecoration = 'none';
+                            e.target.style.textShadow = 'none';
+                          }}
+                        >
+                          {competitor.username}
+                        </a>
+                      </td>
+                      <td className="score">{competitor.totalPoints}</td>
+                    </tr>
+                  );
+                })}
+              </tbody>
+            </table>
+          </div>
+        ) : (
+          <div 
+            style={{ 
+              textAlign: 'center', 
+              padding: '3rem 2rem', 
+              border: '1px solid rgba(0, 255, 255, 0.2)', 
+              backgroundColor: 'rgba(5, 5, 10, 0.8)',
+              borderRadius: '4px',
+              position: 'relative',
+              overflow: 'hidden'
+            }}
+          >
+            <div style={{
+              position: 'absolute',
+              top: 0, left: 0, right: 0, bottom: 0,
+              backgroundImage: 'linear-gradient(rgba(0, 255, 255, 0.05) 1px, transparent 1px), linear-gradient(90deg, rgba(0, 255, 255, 0.05) 1px, transparent 1px)',
+              backgroundSize: '20px 20px',
+              zIndex: 0
+            }}></div>
+            <div style={{ position: 'relative', zIndex: 1 }}>
+              <h3 style={{ color: 'var(--neon-cyan)', marginBottom: '0.5rem', fontFamily: 'var(--font-header)', textTransform: 'uppercase' }}>Sin Resultados</h3>
+              <p style={{ color: 'var(--text-muted)', margin: 0 }}>Aún no hay puntuaciones registradas para esta temporada.</p>
+              <Link to="/registration" style={{ display: 'inline-block', marginTop: '1.5rem', color: 'var(--neon-green)', textDecoration: 'none', fontSize: '0.9rem', borderBottom: '1px solid var(--neon-green)' }}>¡Sé el primero en inscribirte!</Link>
+            </div>
+          </div>
+        )}
       </section>
 
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '2rem' }} className="animate-fade-up delay-300">
