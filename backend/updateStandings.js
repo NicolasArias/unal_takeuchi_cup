@@ -14,32 +14,52 @@ async function fetchCSV(url) {
         const res = await fetch(url);
         if (!res.ok) throw new Error(`HTTP error fetching CSV! status: ${res.status}`);
         const text = await res.text();
-        
-        // Simple CSV parser
-        const lines = text.split('\n').filter(line => line.trim().length > 0);
-        if (lines.length < 2) return {};
-        
-        const headers = lines[0].split(',').map(h => h.trim().replace(/"/g, '').toLowerCase());
-        const atCoderIdx = headers.findIndex(h => h.includes('atcoder') || h.includes('user'));
-        const userIdx = headers.findIndex(h => h.includes('correo') || h.includes('nombre') || h.includes('username') || h.includes('unal'));
-        
-        const mapping = {};
-        for (let i = 1; i < lines.length; i++) {
-            // Regex to handle CSV structure ignoring commas inside quotes
-            const row = lines[i].split(',').map(c => c.trim().replace(/^"|"$/g, ''));
-            const unalUser = row[userIdx] || row[0];
-            const atCoderHandle = row[atCoderIdx] || row[2] || row[1];
-            
-            if (atCoderHandle) {
-                // Map lowercase back to the correct capitalized Handle found in the sheet
-                mapping[atCoderHandle.toLowerCase()] = atCoderHandle;
-            }
-        }
-        return mapping;
+        return parseCSV(text);
     } catch (e) {
         console.warn(`[WARN] Could not fetch real CSV (${e.message}). Using empty mapping.`);
         return {};
     }
+}
+
+function parseCSV(text) {
+    // Simple CSV parser
+    const lines = text.split('\n').filter(line => line.trim().length > 0);
+    if (lines.length < 2) return {};
+    
+    const headers = lines[0].split(',').map(h => h.trim().replace(/"/g, '').toLowerCase());
+    const atCoderIdx = headers.findIndex(h => h.includes('atcoder') || h.includes('user'));
+    
+    const mapping = {};
+    for (let i = 1; i < lines.length; i++) {
+        // Regex to handle CSV structure ignoring commas inside quotes
+        const row = lines[i].split(',').map(c => c.trim().replace(/^"|"$/g, ''));
+        const atCoderHandle = row[atCoderIdx] || row[2] || row[1];
+        
+        if (atCoderHandle) {
+            // Map lowercase back to the correct capitalized Handle found in the sheet
+            mapping[atCoderHandle.toLowerCase()] = atCoderHandle;
+        }
+    }
+    return mapping;
+}
+
+function fetchLocalCSV(safeSeasonName) {
+    const seasonSpecificPath = path.join(__dirname, `${safeSeasonName}_participants.csv`);
+    const generalPath = path.join(__dirname, 'participants.csv');
+    
+    if (fs.existsSync(seasonSpecificPath)) {
+        console.log(`Loading season-specific participant mapping from ${seasonSpecificPath}...`);
+        const text = fs.readFileSync(seasonSpecificPath, 'utf-8');
+        return { mapping: parseCSV(text), exclusive: true };
+    }
+    
+    if (fs.existsSync(generalPath)) {
+        console.log(`Loading general participant mapping from ${generalPath}...`);
+        const text = fs.readFileSync(generalPath, 'utf-8');
+        return { mapping: parseCSV(text), exclusive: true };
+    }
+    
+    return { mapping: {}, exclusive: false };
 }
 
 async function fetchAtCoderStandings(contestId) {
@@ -54,22 +74,20 @@ async function fetchAtCoderStandings(contestId) {
 
 function rebuildIndexFile(seasonsDir, mockStandingsPath) {
     const files = fs.readdirSync(seasonsDir).filter(f => f.endsWith('.json'));
-    let importsStr = '';
-    let exportStr = 'export const mockStandingsData = {\n';
+    const imports = files.map(file => {
+        const varName = file.replace('.json', '').replace(/-/g, '_');
+        return `import ${varName} from './seasons/${file}';`;
+    }).join('\n');
     
-    files.forEach(file => {
-        const fileName = path.basename(file, '.json');
-        // The display name should have spaces for the UI select, 
-        // but we'll use the filename as the key which now uses underscores.
-        const displayName = fileName.replace(/_/g, ' ');
-        const safeVarName = fileName.replace(/\W/g, '');
-        
-        importsStr += `import ${safeVarName} from './seasons/${file}';\n`;
-        exportStr += `  "${displayName}": ${safeVarName},\n`;
-    });
-    
-    exportStr += '};\n';
-    fs.writeFileSync(mockStandingsPath, importsStr + '\n' + exportStr, 'utf-8');
+    const dataObj = files.map(file => {
+        const name = file.replace('.json', '').replace(/_/g, ' ');
+        const varName = file.replace('.json', '').replace(/-/g, '_');
+        return `  "${name}": ${varName}`;
+    }).join(',\n');
+
+    const content = `${imports}\n\nexport const mockStandingsData = {\n${dataObj}\n};\n`;
+
+    fs.writeFileSync(mockStandingsPath, content);
     console.log(`✅ successfully rebuilt index at ${mockStandingsPath}.`);
 }
 
@@ -79,8 +97,17 @@ async function updateStandings(contestId, activeSeason) {
     console.log(`Starting standings update for AtCoder contest: ${contestId} on season: ${activeSeason}`);
     
     // 1. Fetch Contestants Map
-    const atcoderToUnal = await fetchCSV(SHEET_CSV_URL);
-    console.log(`Loaded mapping for ${Object.keys(atcoderToUnal).length} registered contestants.`);
+    const { mapping: localMapping, exclusive } = fetchLocalCSV(safeSeasonName);
+    let atcoderToUnal;
+    
+    if (exclusive) {
+        console.log(`Using local mapping exclusively (${Object.keys(localMapping).length} contestants).`);
+        atcoderToUnal = localMapping;
+    } else {
+        const remoteMapping = await fetchCSV(SHEET_CSV_URL);
+        atcoderToUnal = { ...remoteMapping, ...localMapping };
+        console.log(`Loaded mapping for ${Object.keys(atcoderToUnal).length} registered contestants.`);
+    }
     
     // 2. Fetch AtCoder Data
     const resultsJson = await fetchAtCoderStandings(contestId);
@@ -100,11 +127,11 @@ async function updateStandings(contestId, activeSeason) {
     // 4. Score Points
     const pointsAwarded = {};
     unalResults.forEach((result, index) => {
-        // Use the exactly cased handle straight from AtCoder results
-        const username = result.UserScreenName;
+        // Use lowercase for lookup compatibility
+        const username = result.UserScreenName.toLowerCase();
         const points = index < POINTS_CONFIG.length ? POINTS_CONFIG[index] : DEFAULT_POINTS;
         pointsAwarded[username] = points;
-        console.log(` - Rank ${index + 1}: ${username} earned ${points} pts`);
+        console.log(` - Rank ${index + 1}: ${result.UserScreenName} earned ${points} pts`);
     });
     
     // 5. Update Local JSON database
@@ -118,30 +145,28 @@ async function updateStandings(contestId, activeSeason) {
     }
     
     const userMap = {};
+    // If exclusive, filter existing data to only include those in atcoderToUnal
+    if (exclusive) {
+        seasonData = seasonData.filter(userObj => atcoderToUnal[userObj.username.toLowerCase()] !== undefined);
+    }
+
     seasonData.forEach(userObj => {
         userMap[userObj.username] = userObj;
         if (!userObj.stages) userObj.stages = [];
     });
     
     // Apply new points
-    for (const [username, points] of Object.entries(pointsAwarded)) {
-        if (!userMap[username]) {
-            userMap[username] = { username, totalPoints: 0, stages: [] };
-            seasonData.push(userMap[username]);
+    for (const [lowercaseHandle, correctHandle] of Object.entries(atcoderToUnal)) {
+        const points = pointsAwarded[lowercaseHandle] || 0;
+        
+        if (!userMap[correctHandle]) {
+            userMap[correctHandle] = { username: correctHandle, totalPoints: 0, stages: [] };
+            seasonData.push(userMap[correctHandle]);
         }
-        userMap[username].stages.push(points);
+        
+        userMap[correctHandle].stages.push(points);
+        userMap[correctHandle].totalPoints = userMap[correctHandle].stages.reduce((acc, val) => acc + val, 0);
     }
-    
-    // Fill 0 points for contestants who missed the contest
-    Object.values(userMap).forEach(userObj => {
-        // If they were already in the DB but didn't compete this stage
-        if (pointsAwarded[userObj.username] === undefined) {
-             // To keep arrays equal length, we only append 0 if they haven't caught up to the max stages count
-             // Ideally we just push 0 if they don't have it this iteration
-             userObj.stages.push(0);
-        }
-        userObj.totalPoints = userObj.stages.reduce((acc, val) => acc + val, 0);
-    });
     
     // Sort overall ranking by total points descending
     seasonData.sort((a, b) => b.totalPoints - a.totalPoints);
