@@ -10,7 +10,7 @@ on:
       active_season:
         description: 'Season Name (e.g., Season 2025-II or Season 2026-I)'
         required: true
-        default: 'Season 2025-II'
+        default: 'Season 2026-I'
         type: string
 
 jobs:
