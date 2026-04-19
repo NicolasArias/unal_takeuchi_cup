@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { mockStandingsData } from '../data/mockStandings';
 
 export default function Home() {
-  const seasons = Object.keys(mockStandingsData);
+  const seasons = Object.keys(mockStandingsData).reverse();
   const [selectedSeason, setSelectedSeason] = useState(seasons[0]);
   const topCompetitors = mockStandingsData[selectedSeason].slice(0, 6);
 

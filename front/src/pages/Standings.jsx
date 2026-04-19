@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { mockStandingsData } from '../data/mockStandings';
 
 export default function Standings() {
-  const seasons = Object.keys(mockStandingsData);
+  const seasons = Object.keys(mockStandingsData).reverse();
   const [selectedSeason, setSelectedSeason] = useState(seasons[0]);
   const mockData = mockStandingsData[selectedSeason];
 
