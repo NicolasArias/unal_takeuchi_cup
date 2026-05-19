@@ -1,29 +1,68 @@
 [
   {
-    "username": "alejandromr05",
-    "totalPoints": 70,
+    "username": "JuanDav111__",
+    "totalPoints": 110,
     "stages": [
+      20,
+      20,
       25,
       25,
       20
     ]
   },
   {
-    "username": "JuanDav111__",
-    "totalPoints": 65,
+    "username": "alejandromr05",
+    "totalPoints": 95,
     "stages": [
+      25,
+      25,
       20,
-      20,
+      0,
       25
     ]
   },
   {
     "username": "crisleoc",
-    "totalPoints": 31,
+    "totalPoints": 55,
     "stages": [
       6,
       8,
+      17,
+      12,
+      12
+    ]
+  },
+  {
+    "username": "spacecowboy03",
+    "totalPoints": 54,
+    "stages": [
+      17,
+      0,
+      0,
+      20,
       17
+    ]
+  },
+  {
+    "username": "ivant",
+    "totalPoints": 50,
+    "stages": [
+      5,
+      6,
+      14,
+      17,
+      8
+    ]
+  },
+  {
+    "username": "CaSala",
+    "totalPoints": 48,
+    "stages": [
+      14,
+      14,
+      0,
+      10,
+      10
     ]
   },
   {
@@ -32,15 +71,8 @@
     "stages": [
       10,
       10,
-      10
-    ]
-  },
-  {
-    "username": "CaSala",
-    "totalPoints": 28,
-    "stages": [
-      14,
-      14,
+      10,
+      0,
       0
     ]
   },
@@ -50,16 +82,9 @@
     "stages": [
       8,
       5,
-      12
-    ]
-  },
-  {
-    "username": "ivant",
-    "totalPoints": 25,
-    "stages": [
-      5,
-      6,
-      14
+      12,
+      0,
+      0
     ]
   },
   {
@@ -68,16 +93,31 @@
     "stages": [
       1,
       17,
+      0,
+      0,
       0
     ]
   },
   {
-    "username": "spacecowboy03",
-    "totalPoints": 17,
+    "username": "Asternold",
+    "totalPoints": 14,
     "stages": [
-      17,
       0,
+      0,
+      0,
+      14,
       0
+    ]
+  },
+  {
+    "username": "danidiaztech",
+    "totalPoints": 14,
+    "stages": [
+      0,
+      0,
+      0,
+      0,
+      14
     ]
   },
   {
@@ -85,6 +125,8 @@
     "totalPoints": 12,
     "stages": [
       12,
+      0,
+      0,
       0,
       0
     ]
@@ -95,6 +137,8 @@
     "stages": [
       0,
       12,
+      0,
+      0,
       0
     ]
   },
@@ -104,6 +148,8 @@
     "stages": [
       4,
       4,
+      0,
+      0,
       0
     ]
   },
@@ -113,6 +159,8 @@
     "stages": [
       3,
       3,
+      0,
+      0,
       0
     ]
   },
@@ -122,13 +170,6 @@
     "stages": [
       2,
       0,
-      0
-    ]
-  },
-  {
-    "username": "Asternold",
-    "totalPoints": 0,
-    "stages": [
       0,
       0,
       0
@@ -140,6 +181,8 @@
     "stages": [
       0,
       0,
+      0,
+      0,
       0
     ]
   },
@@ -147,6 +190,8 @@
     "username": "csandovalc",
     "totalPoints": 0,
     "stages": [
+      0,
+      0,
       0,
       0,
       0
@@ -158,6 +203,8 @@
     "stages": [
       0,
       0,
+      0,
+      0,
       0
     ]
   },
@@ -165,6 +212,8 @@
     "username": "javvargasme",
     "totalPoints": 0,
     "stages": [
+      0,
+      0,
       0,
       0,
       0
@@ -176,13 +225,6 @@
     "stages": [
       0,
       0,
-      0
-    ]
-  },
-  {
-    "username": "danidiaztech",
-    "totalPoints": 0,
-    "stages": [
       0,
       0,
       0
