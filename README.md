@@ -32,20 +32,28 @@ npm run lint
 npm run preview
 ```
 
-## Season Data
+## Season Source Data
 
-Season JSON files use this structure:
+Each season is defined by a `data.json` file under `scripts/<stage>/`. This is the source data used by the standings generator:
 
 ```json
 {
-  "username": "participant_handle",
-  "division": 1,
-  "totalPoints": 25,
-  "stages": [25, 0]
+  "contests": ["abc479", "abc480"],
+  "points": [25, 20, 17, 14, 12],
+  "participants": [
+    {
+      "handle": "participant_handle",
+      "division": 1
+    }
+  ]
 }
 ```
 
-The `division` field is optional for backward compatibility. The frontend displays a normal single table for seasons without it. When present, the Home page and full standings page automatically create one tab per division.
+- `contests`: AtCoder contest IDs to process, in stage order.
+- `points`: points awarded by position within each division.
+- `participants`: registered AtCoder handles and their division. Division `1` is advanced/intermediate and division `2` is beginner.
+
+The generator uses this source file to create the season standings. Participants who do not submit in a processed contest receive `0` for that stage.
 
 ## Adding A New Season
 

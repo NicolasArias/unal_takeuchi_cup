@@ -1,4 +1,4 @@
-"""Generate the Season 2026-II standings from AtCoder contest results."""
+"""Generate Season standings from AtCoder contest results."""
 
 from __future__ import annotations
 
