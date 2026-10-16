@@ -130,6 +130,7 @@ def build_standings(data_path: Path) -> list[dict]:
 
     for stage_index, (contest_id, results) in enumerate(completed_contests):
         division_results = {1: [], 2: []}
+        contest_points = {participant["username"]: 0 for participant in participants}
         for result in results:
             handle = result.get("UserScreenName")
             place = result.get("Place")
@@ -141,7 +142,10 @@ def build_standings(data_path: Path) -> list[dict]:
         for division in division_results:
             ranked_results = sorted(division_results[division], key=lambda item: item[0])
             for position, (_, participant) in enumerate(ranked_results):
-                participant["stages"][stage_index] = points[position] if position < len(points) else 0
+                contest_points[participant["username"]] = points[position] if position < len(points) else 0
+
+        for participant in participants:
+            participant["stages"][stage_index] = contest_points[participant["username"]]
 
         print(f"Processed {contest_id}")
 
