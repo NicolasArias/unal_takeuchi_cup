@@ -7,7 +7,7 @@ Website and standings tools for the UNAL Takeuchi Cup, a competitive programming
 - `front/`: React and Vite website.
 - `front/src/pages/`: website pages, including the home page and standings.
 - `front/src/data/seasons/`: generated season standings as JSON files.
-- `front/src/data/mockStandings.js`: frontend season registry. Every season shown by the website must be imported here.
+- `front/src/data/mockStandings.js`: frontend season data loader that discovers season JSON files automatically.
 - `scripts/<stage>/data.json`: contest list, point distribution, and participants for a season.
 - `scripts/generate_standings.py`: division-aware standings generator for any season stage.
 
@@ -47,17 +47,25 @@ Season JSON files use this structure:
 
 The `division` field is optional for backward compatibility. The frontend displays a normal single table for seasons without it. When present, the Home page and full standings page automatically create one tab per division.
 
-To make a new season visible, add its JSON import and entry to `front/src/data/mockStandings.js`:
+## Adding A New Season
 
-```js
-import Season_2026_II from './seasons/Season_2026_II.json';
+To add a new season, create only one new folder under `scripts/`. The folder name must use this format:
 
-export const mockStandingsData = {
-  "Season 2026-II": Season_2026_II
-};
+```text
+YYYY_I
+YYYY_II
+YYYY_III
 ```
 
-Keep the existing season entries when adding a new one so previous standings remain accessible.
+For example, to add the first season of 2027:
+
+```text
+scripts/2027_I/data.json
+```
+
+The `data.json` file must contain the contest IDs, point distribution, and participants for that season. Copy the structure of `scripts/2026_II/data.json` and update its values.
+
+No workflow or frontend registry change is required. The scheduled GitHub Action automatically finds the latest valid season folder, and the frontend automatically discovers the generated JSON file in `front/src/data/seasons/`.
 
 ## Generate Season Standings
 
@@ -81,20 +89,20 @@ Its behavior is division-aware:
 - Future contests are skipped.
 - Unavailable contests are reported and skipped so the remaining results can still be generated.
 
-After generating a new season, register its JSON file in `front/src/data/mockStandings.js`, then run the frontend lint and build commands.
+After generating a new season manually, run the frontend lint and build commands.
 
 ## Scheduled Standings Updates
 
-The workflow `.github/workflows/update_season_standings.yml` runs the Season 2026-II generator every Saturday and Sunday at 07:30, 08:00, 08:30, and 08:45 in UTC-5. GitHub Actions schedules use UTC, so the workflow uses 12:30, 13:00, 13:30, and 13:45 UTC.
+The workflow `.github/workflows/update_season_standings.yml` finds the latest season folder containing `data.json` and runs its generator every Saturday and Sunday at 07:30, 08:00, 08:30, and 08:45 in UTC-5. GitHub Actions schedules use UTC, so the workflow uses 12:30, 13:00, 13:30, and 13:45 UTC.
 
-The workflow can also be started manually from the repository's **Actions** tab. It commits and pushes `Season_2026_II.json` only when the generated standings change. Scheduled workflows can be delayed slightly by GitHub during periods of high demand.
+The workflow can also be started manually from the repository's **Actions** tab. It commits and pushes the matching `Season_<stage>.json` only when the generated standings change. Scheduled workflows can be delayed slightly by GitHub during periods of high demand.
 
 ## Updating Participants
 
-For Season 2026-II, edit `scripts/2026_II/data.json`:
+Edit the relevant season's `scripts/<stage>/data.json`:
 
 - Add contest IDs to `contests` in chronological order.
 - Update `points` to change the per-division distribution.
 - Add or remove participants with their AtCoder `handle` and `division` (`1` or `2`).
 
-Re-run the generator after changing this file.
+Re-run the generator with that stage after changing this file.

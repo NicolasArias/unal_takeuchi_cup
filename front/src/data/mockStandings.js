@@ -1,9 +1,11 @@
-import Season_2025_II from './seasons/Season_2025_II.json';
-import Season_2026_I from './seasons/Season_2026_I.json';
-import Season_2026_II from './seasons/Season_2026_II.json';
+const seasonModules = import.meta.glob('./seasons/*.json', {
+  eager: true,
+  import: 'default'
+});
 
-export const mockStandingsData = {
-  "Season 2025 II": Season_2025_II,
-  "Season 2026-I": Season_2026_I,
-  "Season 2026-II": Season_2026_II
-};
+export const mockStandingsData = Object.fromEntries(
+  Object.entries(seasonModules).map(([seasonPath, seasonData]) => {
+    const seasonFileName = seasonPath.split('/').pop().replace(/\.json$/, '');
+    return [seasonFileName.replace(/_/g, ' '), seasonData];
+  })
+);

@@ -1,4 +1,4 @@
-name: Update Season 2026-II standings
+name: Update latest season standings
 
 on:
   schedule:
@@ -13,7 +13,7 @@ permissions:
   contents: write
 
 concurrency:
-  group: update-season-2026-ii-standings
+  group: update-latest-season-standings
   cancel-in-progress: false
 
 jobs:
@@ -29,17 +29,47 @@ jobs:
         with:
           python-version: '3.12'
 
+      - name: Find latest season
+        id: season
+        shell: bash
+        run: |
+          STAGE=$(python - <<'PY'
+          from pathlib import Path
+          import re
+
+          stage_order = {"I": 1, "II": 2, "III": 3}
+          candidates = []
+          pattern = re.compile(r"(?P<year>\d{4})_(?P<stage>I|II|III)")
+
+          for directory in Path("scripts").iterdir():
+              match = pattern.fullmatch(directory.name)
+              if directory.is_dir() and match and (directory / "data.json").is_file():
+                  candidates.append((
+                      int(match.group("year")),
+                      stage_order[match.group("stage")],
+                      directory.name,
+                  ))
+
+          if not candidates:
+              raise SystemExit("No season folders matching YYYY_I, YYYY_II, or YYYY_III were found")
+
+          print(max(candidates)[2])
+          PY
+          )
+          echo "stage=$STAGE" >> "$GITHUB_OUTPUT"
+          echo "Latest season: $STAGE"
+
       - name: Generate standings
-        run: python scripts/generate_standings.py 2026_II
+        run: python scripts/generate_standings.py "${{ steps.season.outputs.stage }}"
 
       - name: Commit and push changes
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
-          git add front/src/data/seasons/Season_2026_II.json
+          git add "front/src/data/seasons/Season_${{ steps.season.outputs.stage }}.json"
           if git diff --cached --quiet; then
             echo "No standings changes detected."
           else
-            git commit -m "chore(standings): update Season 2026-II"
+            git commit -m "chore(standings): update ${{ steps.season.outputs.stage }}"
             git push
           fi
