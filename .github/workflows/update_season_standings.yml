@@ -1,0 +1,45 @@
+name: Update Season 2026-II standings
+
+on:
+  schedule:
+    # GitHub Actions cron uses UTC. These are 07:30, 08:00, 08:30, and 08:45 UTC-5.
+    - cron: '30 12 * * 6,0'
+    - cron: '0 13 * * 6,0'
+    - cron: '30 13 * * 6,0'
+    - cron: '45 13 * * 6,0'
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+concurrency:
+  group: update-season-2026-ii-standings
+  cancel-in-progress: false
+
+jobs:
+  update-standings:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Generate standings
+        run: python scripts/generate_standings.py 2026_II
+
+      - name: Commit and push changes
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add front/src/data/seasons/Season_2026_II.json
+          if git diff --cached --quiet; then
+            echo "No standings changes detected."
+          else
+            git commit -m "chore(standings): update Season 2026-II"
+            git push
+          fi

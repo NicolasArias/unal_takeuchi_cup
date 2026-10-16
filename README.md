@@ -83,6 +83,12 @@ Its behavior is division-aware:
 
 After generating a new season, register its JSON file in `front/src/data/mockStandings.js`, then run the frontend lint and build commands.
 
+## Scheduled Standings Updates
+
+The workflow `.github/workflows/update_season_standings.yml` runs the Season 2026-II generator every Saturday and Sunday at 07:30, 08:00, 08:30, and 08:45 in UTC-5. GitHub Actions schedules use UTC, so the workflow uses 12:30, 13:00, 13:30, and 13:45 UTC.
+
+The workflow can also be started manually from the repository's **Actions** tab. It commits and pushes `Season_2026_II.json` only when the generated standings change. Scheduled workflows can be delayed slightly by GitHub during periods of high demand.
+
 ## Updating Participants
 
 For Season 2026-II, edit `scripts/2026_II/data.json`:
