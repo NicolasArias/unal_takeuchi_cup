@@ -5,7 +5,19 @@ import { mockStandingsData } from '../data/mockStandings';
 export default function Home() {
   const seasons = Object.keys(mockStandingsData).reverse();
   const [selectedSeason, setSelectedSeason] = useState(seasons[0]);
-  const topCompetitors = mockStandingsData[selectedSeason].slice(0, 6);
+  const [selectedDivision, setSelectedDivision] = useState(null);
+  const seasonData = mockStandingsData[selectedSeason];
+  const divisions = [...new Set(
+    seasonData
+      ?.filter(row => row.division !== undefined && row.division !== null)
+      .map(row => row.division)
+  )].sort((a, b) => a - b);
+  const hasDivisions = divisions.length > 0;
+  const activeDivision = divisions.includes(selectedDivision) ? selectedDivision : divisions[0];
+  const visibleData = hasDivisions
+    ? seasonData.filter(row => row.division === activeDivision)
+    : seasonData;
+  const topCompetitors = visibleData.slice(0, 6);
 
   return (
     <>
@@ -45,6 +57,22 @@ export default function Home() {
             ))}
           </select>
         </div>
+        {hasDivisions && (
+          <div className="division-tabs" role="tablist" aria-label="Divisiones">
+            {divisions.map(division => (
+              <button
+                key={division}
+                type="button"
+                role="tab"
+                aria-selected={activeDivision === division}
+                className={`division-tab ${activeDivision === division ? 'active' : ''}`}
+                onClick={() => setSelectedDivision(division)}
+              >
+                División {division}
+              </button>
+            ))}
+          </div>
+        )}
         {topCompetitors && topCompetitors.length > 0 ? (
           <div className="table-container">
             <table>
