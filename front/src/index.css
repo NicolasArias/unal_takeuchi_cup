@@ -19,6 +19,31 @@
   box-sizing: border-box;
   margin: 0;
   padding: 0;
+  scrollbar-color: var(--neon-pink) transparent;
+  scrollbar-width: thin;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  border: 2px solid transparent;
+  border-radius: 999px;
+  background: var(--neon-pink);
+  background-clip: padding-box;
+  box-shadow: 0 0 8px var(--neon-pink);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--neon-cyan);
+  background-clip: padding-box;
+  box-shadow: 0 0 8px var(--neon-cyan);
 }
 
 body {
@@ -352,6 +377,16 @@ table {
   min-width: 640px;
 }
 
+.username-column,
+.username-cell {
+  width: 100%;
+}
+
+.standings-table th,
+.standings-table td {
+  white-space: nowrap;
+}
+
 th {
   font-family: var(--font-header);
   background: rgba(20, 5, 30, 0.95);
@@ -363,6 +398,13 @@ th {
   position: sticky;
   top: 0;
   z-index: 10;
+}
+
+.rank-column,
+.rank-cell {
+  width: 1%;
+  text-align: center;
+  white-space: nowrap;
 }
 
 td {
@@ -377,6 +419,9 @@ tr:hover td {
 }
 
 .rank-badge {
+  display: flex;
+  align-items: center;
+  justify-content: center;
   font-family: var(--font-retro);
   font-size: 0.7rem;
   width: 32px;
@@ -479,6 +524,16 @@ footer {
 
   .main-content {
     padding-top: 2.5rem;
+  }
+
+  .standings-table {
+    width: 100%;
+    min-width: 100%;
+  }
+
+  .username-column,
+  .username-cell {
+    width: 100%;
   }
 
   .page-title {

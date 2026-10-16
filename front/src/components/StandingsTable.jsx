@@ -3,12 +3,12 @@ export default function StandingsTable({ rows, showStages = false, animateRows =
 
   return (
     <div className={`table-container${animateTable ? ' animate-fade-up delay-300' : ''}`}>
-      <table>
+      <table className="standings-table">
         <thead>
           <tr>
-            <th>Posición</th>
-            <th>{showStages ? 'Usuario del concursante' : 'Usuario'}</th>
-            <th>Puntaje Total</th>
+            <th className="rank-column">#</th>
+            <th className="username-column">Usuario</th>
+            <th>Puntaje</th>
             {Array.from({ length: stageCount }, (_, index) => (
               <th key={index}>Etapa {index + 1}</th>
             ))}
@@ -27,8 +27,8 @@ export default function StandingsTable({ rows, showStages = false, animateRows =
                 className={animateRows ? 'animate-fade-up' : undefined}
                 style={animateRows ? { animationDelay: `${index * 100}ms` } : undefined}
               >
-                <td><div className={`rank-badge ${rankClass}`}>{index + 1}</div></td>
-                <td>
+                <td className="rank-cell"><div className={`rank-badge ${rankClass}`}>{index + 1}</div></td>
+                <td className="username-cell">
                   <div style={{ fontWeight: 600 }}>
                     <a
                       href={`https://atcoder.jp/users/${row.username}`}
