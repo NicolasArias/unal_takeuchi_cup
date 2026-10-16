@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { mockStandingsData } from '../data/mockStandings';
+import StandingsTable from '../components/StandingsTable';
 
 export default function Standings() {
   const seasons = Object.keys(mockStandingsData).reverse();
@@ -71,58 +72,7 @@ export default function Standings() {
             </div>
           )}
 
-          <div className="table-container animate-fade-up delay-300">
-            <table>
-              <thead>
-                <tr>
-                  <th>Posición</th>
-                  <th>Usuario del concursante</th>
-                  <th>Puntaje Total</th>
-                  {mockData[0]?.stages.map((_, i) => (
-                    <th key={i}>Etapa {i + 1}</th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {visibleData.map((row, index) => {
-                  let rankClass = '';
-                  if (index === 0) rankClass = 'rank-1';
-                  else if (index === 1) rankClass = 'rank-2';
-                  else if (index === 2) rankClass = 'rank-3';
-                  
-                  return (
-                    <tr key={index} className="animate-fade-up" style={{ animationDelay: `${index * 100}ms` }}>
-                      <td><div className={`rank-badge ${rankClass}`}>{index + 1}</div></td>
-                      <td>
-                        <div style={{ fontWeight: 600 }}>
-                          <a 
-                            href={`https://atcoder.jp/users/${row.username}`} 
-                            target="_blank" 
-                            rel="noopener noreferrer" 
-                            style={{ color: 'var(--neon-cyan)', textDecoration: 'none', transition: 'all 0.3s' }}
-                            onMouseOver={(e) => {
-                              e.target.style.textDecoration = 'underline';
-                              e.target.style.textShadow = '0 0 8px var(--neon-cyan)';
-                            }}
-                            onMouseOut={(e) => {
-                              e.target.style.textDecoration = 'none';
-                              e.target.style.textShadow = 'none';
-                            }}
-                          >
-                            {row.username}
-                          </a>
-                        </div>
-                      </td>
-                      <td className="score">{row.totalPoints}</td>
-                      {row.stages.map((stageScore, i) => (
-                        <td key={i}>{stageScore}</td>
-                      ))}
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
+          <StandingsTable rows={visibleData} showStages animateRows animateTable />
         </>
       ) : (
         <div 

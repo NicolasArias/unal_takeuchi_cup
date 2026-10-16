@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import { mockStandingsData } from '../data/mockStandings';
+import StandingsTable from '../components/StandingsTable';
 
 export default function Home() {
   const seasons = Object.keys(mockStandingsData).reverse();
@@ -74,50 +75,7 @@ export default function Home() {
           </div>
         )}
         {topCompetitors && topCompetitors.length > 0 ? (
-          <div className="table-container">
-            <table>
-              <thead>
-                <tr>
-                  <th>Posición</th>
-                  <th>Usuario</th>
-                  <th>Puntaje Total</th>
-                </tr>
-              </thead>
-              <tbody>
-                {topCompetitors.map((competitor, index) => {
-                  let rankClass = '';
-                  if (index === 0) rankClass = 'rank-1';
-                  else if (index === 1) rankClass = 'rank-2';
-                  else if (index === 2) rankClass = 'rank-3';
-                  
-                  return (
-                    <tr key={index}>
-                      <td><div className={`rank-badge ${rankClass}`}>{index + 1}</div></td>
-                      <td style={{ fontWeight: 600 }}>
-                        <a 
-                          href={`https://atcoder.jp/users/${competitor.username}`} 
-                          target="_blank" 
-                          rel="noopener noreferrer" 
-                          style={{ color: 'var(--neon-cyan)', textDecoration: 'none', transition: 'all 0.3s' }}
-                          onMouseOver={(e) => {
-                            e.target.style.textDecoration = 'underline';
-                            e.target.style.textShadow = '0 0 8px var(--neon-cyan)';
-                          }}
-                          onMouseOut={(e) => {
-                            e.target.style.textDecoration = 'none';
-                            e.target.style.textShadow = 'none';
-                          }}
-                        >
-                          {competitor.username}
-                        </a>
-                      </td>
-                      <td className="score">{competitor.totalPoints}</td>
-                    </tr>
-                  );
-                })}
-              </tbody>
-            </table>
-          </div>
+          <StandingsTable rows={topCompetitors} />
         ) : (
           <div 
             style={{ 
