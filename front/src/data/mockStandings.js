@@ -1,5 +1,5 @@
 import Season_2025_II from './seasons/Season_2025_II.json';
-import Season_2026_I from './seasons/Season_2026-I.json';
+import Season_2026_I from './seasons/Season_2026_I.json';
 import Season_2026_II from './seasons/Season_2026_II.json';
 
 export const mockStandingsData = {

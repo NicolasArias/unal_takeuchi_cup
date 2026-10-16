@@ -134,8 +134,15 @@ def build_standings(data_path: Path) -> list[dict]:
         for result in results:
             handle = result.get("UserScreenName")
             place = result.get("Place")
+            competitions = result.get("Competitions")
             participant = participant_by_handle.get(handle.casefold()) if isinstance(handle, str) else None
-            if participant is None or not isinstance(place, int) or place < 1:
+            if (
+                participant is None
+                or not isinstance(place, int)
+                or place < 1
+                or not isinstance(competitions, int)
+                or competitions < 1
+            ):
                 continue
             division_results[participant["division"]].append((place, participant))
 

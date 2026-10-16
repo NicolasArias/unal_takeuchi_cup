@@ -136,23 +136,7 @@
     ]
   },
   {
-    "username": "C8rl8s",
-    "division": 2,
-    "totalPoints": 4,
-    "stages": [
-      4
-    ]
-  },
-  {
     "username": "Dutano",
-    "division": 2,
-    "totalPoints": 4,
-    "stages": [
-      4
-    ]
-  },
-  {
-    "username": "isdelgador",
     "division": 2,
     "totalPoints": 4,
     "stages": [
@@ -192,7 +176,23 @@
     ]
   },
   {
+    "username": "C8rl8s",
+    "division": 2,
+    "totalPoints": 0,
+    "stages": [
+      0
+    ]
+  },
+  {
     "username": "etrianad",
+    "division": 2,
+    "totalPoints": 0,
+    "stages": [
+      0
+    ]
+  },
+  {
+    "username": "isdelgador",
     "division": 2,
     "totalPoints": 0,
     "stages": [
