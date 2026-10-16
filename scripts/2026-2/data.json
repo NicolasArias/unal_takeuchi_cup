@@ -1,0 +1,131 @@
+{
+    "contests": [
+        "abc479",
+        "abc480",
+        "abc481",
+        "abc483",
+        "abc484",
+        "abc485",
+        "abc486"
+    ],
+    "points": [25, 20, 17, 14, 12, 10, 9, 8, 7, 6, 4, 4, 4, 4, 4, 2, 2, 2, 2, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1],
+    "defaultPunts": 0,
+    "participants": [
+        {
+            "handle": "jostos",
+            "division": 1
+        },
+        {
+            "handle": "tomagotchi",
+            "division": 1
+        },
+        {
+            "handle": "JuanDav111__",
+            "division": 1
+        },
+        {
+            "handle": "Anfelesan",
+            "division": 1
+        },
+        {
+            "handle": "dani_iel",
+            "division": 1
+        },
+        {
+            "handle": "Casala",
+            "division": 1
+        },
+        {
+            "handle": "sankiago",
+            "division": 1
+        },
+        {
+            "handle": "crisleoc",
+            "division": 2
+        },
+        {
+            "handle": "ivant",
+            "division": 2
+        },
+        {
+            "handle": "tklmkn",
+            "division": 2
+        },
+        {
+            "handle": "DABBinho",
+            "division": 2
+        },
+        {
+            "handle": "javvargasme",
+            "division": 2
+        },
+        {
+            "handle": "Asternold",
+            "division": 2
+        },
+        {
+            "handle": "cristoferOrdonez",
+            "division": 2
+        },
+        {
+            "handle": "julropi25",
+            "division": 2
+        },
+        {
+            "handle": "AlexDemon",
+            "division": 2
+        },
+        {
+            "handle": "julianfpo",
+            "division": 2
+        },
+        {
+            "handle": "jugilor",
+            "division": 2
+        },
+        {
+            "handle": "rcoon084",
+            "division": 2
+        },
+        {
+            "handle": "Dutano",
+            "division": 2
+        },
+        {
+            "handle": "jmontanaa",
+            "division": 2
+        },
+        {
+            "handle": "AndresRami",
+            "division": 2
+        },
+        {
+            "handle": "bgeorg7",
+            "division": 2
+        },
+        {
+            "handle": "Santycr123",
+            "division": 2
+        },
+        {
+            "handle": "mohos_risitas",
+            "division": 2
+        },
+        {
+            "handle": "etrianad",
+            "division": 2
+        },
+        {
+            "handle": "C8rl8s",
+            "division": 2
+        },
+        {
+            "handle": "isdelgador",
+            "division": 2
+        },
+        {
+            "handle": "Juancho07",
+            "division": 2
+        }
+    ]
+}
