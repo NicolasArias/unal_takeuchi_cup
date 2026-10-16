@@ -13,9 +13,7 @@ from urllib.request import Request, urlopen
 
 
 SCRIPT_DIR = Path(__file__).resolve().parent
-PROJECT_ROOT = SCRIPT_DIR.parents[1]
-DEFAULT_DATA_PATH = SCRIPT_DIR / "data.json"
-DEFAULT_OUTPUT_PATH = PROJECT_ROOT / "front" / "src" / "data" / "seasons" / "Season_2026_II.json"
+PROJECT_ROOT = SCRIPT_DIR.parent
 ATCODER_BASE_URL = "https://atcoder.jp/contests"
 
 
@@ -167,16 +165,23 @@ def build_standings(data_path: Path) -> list[dict]:
 
 def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
-    parser.add_argument("--data", type=Path, default=DEFAULT_DATA_PATH)
-    parser.add_argument("--output", type=Path, default=DEFAULT_OUTPUT_PATH)
+    parser.add_argument(
+        "stage",
+        help="Season folder under scripts and suffix for the output file (for example: 2026_II)",
+    )
     args = parser.parse_args()
 
-    standings = build_standings(args.data)
-    args.output.parent.mkdir(parents=True, exist_ok=True)
-    with args.output.open("w", encoding="utf-8") as output_file:
+    data_path = SCRIPT_DIR / args.stage / "data.json"
+    output_path = PROJECT_ROOT / "front" / "src" / "data" / "seasons" / f"Season_{args.stage}.json"
+    if not data_path.is_file():
+        parser.error(f"No data file found for stage '{args.stage}': {data_path}")
+
+    standings = build_standings(data_path)
+    output_path.parent.mkdir(parents=True, exist_ok=True)
+    with output_path.open("w", encoding="utf-8") as output_file:
         json.dump(standings, output_file, ensure_ascii=False, indent=2)
         output_file.write("\n")
-    print(f"Wrote {len(standings)} participants to {args.output}")
+    print(f"Wrote {len(standings)} participants to {output_path}")
 
 
 if __name__ == "__main__":

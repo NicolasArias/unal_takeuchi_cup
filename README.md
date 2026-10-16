@@ -8,9 +8,8 @@ Website and standings tools for the UNAL Takeuchi Cup, a competitive programming
 - `front/src/pages/`: website pages, including the home page and standings.
 - `front/src/data/seasons/`: generated season standings as JSON files.
 - `front/src/data/mockStandings.js`: frontend season registry. Every season shown by the website must be imported here.
-- `backend/updateStandings.js`: legacy Node.js updater for single-division standings.
-- `scripts/2026-2/data.json`: Season 2026-II contest list, point distribution, and participants.
-- `scripts/2026-2/generate_standings.py`: division-aware Season 2026-II standings generator.
+- `scripts/<stage>/data.json`: contest list, point distribution, and participants for a season.
+- `scripts/generate_standings.py`: division-aware standings generator for any season stage.
 
 ## Requirements
 
@@ -60,15 +59,15 @@ export const mockStandingsData = {
 
 Keep the existing season entries when adding a new one so previous standings remain accessible.
 
-## Generate Season 2026-II Standings
+## Generate Season Standings
 
 From the repository root, run:
 
 ```powershell
-python scripts/2026-2/generate_standings.py
+python scripts/generate_standings.py 2026_II
 ```
 
-The script reads `scripts/2026-2/data.json`, fetches each AtCoder contest's public start time and results, and writes:
+The required stage argument selects `scripts/<stage>/data.json`, fetches each AtCoder contest's public start time and results, and writes:
 
 ```text
 front/src/data/seasons/Season_2026_II.json
@@ -82,33 +81,11 @@ Its behavior is division-aware:
 - Future contests are skipped.
 - Unavailable contests are reported and skipped so the remaining results can still be generated.
 
-Optional paths can be supplied when testing with another data file or output location:
-
-```powershell
-python scripts/2026-2/generate_standings.py --data path/to/data.json --output path/to/standings.json
-```
-
 After generating a new season, register its JSON file in `front/src/data/mockStandings.js`, then run the frontend lint and build commands.
-
-## Legacy Standings Updater
-
-`backend/updateStandings.js` updates one contest using a participant CSV or the configured Google Sheets CSV fallback:
-
-```powershell
-node backend/updateStandings.js <contest-id> [season-name]
-```
-
-Example:
-
-```powershell
-node backend/updateStandings.js abc479 "Season 2025-II"
-```
-
-Run this command from the repository root. The updater rebuilds `front/src/data/mockStandings.js` after writing the season JSON. It uses the legacy single-division point configuration, so use `scripts/2026-2/generate_standings.py` for division-based seasons.
 
 ## Updating Participants
 
-For Season 2026-II, edit `scripts/2026-2/data.json`:
+For Season 2026-II, edit `scripts/2026_II/data.json`:
 
 - Add contest IDs to `contests` in chronological order.
 - Update `points` to change the per-division distribution.
