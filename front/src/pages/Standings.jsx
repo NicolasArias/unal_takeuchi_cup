@@ -5,6 +5,17 @@ export default function Standings() {
   const seasons = Object.keys(mockStandingsData).reverse();
   const [selectedSeason, setSelectedSeason] = useState(seasons[0]);
   const mockData = mockStandingsData[selectedSeason];
+  const divisions = [...new Set(
+    mockData
+      ?.filter(row => row.division !== undefined && row.division !== null)
+      .map(row => row.division)
+  )].sort((a, b) => a - b);
+  const hasDivisions = divisions.length > 0;
+  const [selectedDivision, setSelectedDivision] = useState(null);
+  const activeDivision = divisions.includes(selectedDivision) ? selectedDivision : divisions[0];
+  const visibleData = hasDivisions
+    ? mockData.filter(row => row.division === activeDivision)
+    : mockData;
 
   return (
     <>
@@ -43,6 +54,23 @@ export default function Standings() {
             </span>
           </div>
 
+          {hasDivisions && (
+            <div className="division-tabs" role="tablist" aria-label="Divisiones">
+              {divisions.map(division => (
+                <button
+                  key={division}
+                  type="button"
+                  role="tab"
+                  aria-selected={activeDivision === division}
+                  className={`division-tab ${activeDivision === division ? 'active' : ''}`}
+                  onClick={() => setSelectedDivision(division)}
+                >
+                  División {division}
+                </button>
+              ))}
+            </div>
+          )}
+
           <div className="table-container animate-fade-up delay-300">
             <table>
               <thead>
@@ -56,7 +84,7 @@ export default function Standings() {
                 </tr>
               </thead>
               <tbody>
-                {mockData.map((row, index) => {
+                {visibleData.map((row, index) => {
                   let rankClass = '';
                   if (index === 0) rankClass = 'rank-1';
                   else if (index === 1) rankClass = 'rank-2';

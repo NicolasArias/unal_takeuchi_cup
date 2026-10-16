@@ -269,6 +269,37 @@ h1, h2, h3 {
 }
 
 /* --- TABLES --- */
+.division-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid rgba(0, 255, 255, 0.25);
+}
+
+.division-tab {
+  padding: 0.75rem 1.25rem;
+  border: 1px solid var(--neon-cyan);
+  border-bottom: 0;
+  background: transparent;
+  color: var(--neon-cyan);
+  cursor: pointer;
+  font-family: var(--font-header);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+.division-tab:hover,
+.division-tab.active {
+  background: var(--neon-cyan);
+  color: var(--bg-dark);
+  box-shadow: 0 0 12px var(--neon-cyan);
+}
+
+.division-tab:focus-visible {
+  outline: 2px solid var(--neon-pink);
+  outline-offset: 2px;
+}
+
 .table-container {
   border: 2px solid var(--neon-purple);
   background: rgba(5, 5, 8, 0.8);
