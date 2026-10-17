@@ -60,6 +60,8 @@ jobs:
           echo "Latest season: $STAGE"
 
       - name: Generate standings
+        env:
+          ATCODER_COOKIE: ${{ secrets.ATCODER_COOKIE }}
         run: python scripts/generate_standings.py "${{ steps.season.outputs.stage }}"
 
       - name: Commit and push changes
