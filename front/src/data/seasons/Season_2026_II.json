@@ -128,10 +128,10 @@
   {
     "username": "julropi25",
     "division": 2,
-    "totalPoints": 15,
+    "totalPoints": 14,
     "stages": [
       8,
-      7
+      6
     ]
   },
   {
@@ -144,21 +144,30 @@
     ]
   },
   {
-    "username": "jugilor",
-    "division": 2,
-    "totalPoints": 10,
-    "stages": [
-      4,
-      6
-    ]
-  },
-  {
     "username": "cristoferOrdonez",
     "division": 2,
     "totalPoints": 9,
     "stages": [
       9,
       0
+    ]
+  },
+  {
+    "username": "jugilor",
+    "division": 2,
+    "totalPoints": 8,
+    "stages": [
+      4,
+      4
+    ]
+  },
+  {
+    "username": "Juancho07",
+    "division": 2,
+    "totalPoints": 7,
+    "stages": [
+      0,
+      7
     ]
   },
   {
@@ -226,15 +235,6 @@
   },
   {
     "username": "jmontanaa",
-    "division": 2,
-    "totalPoints": 0,
-    "stages": [
-      0,
-      0
-    ]
-  },
-  {
-    "username": "Juancho07",
     "division": 2,
     "totalPoints": 0,
     "stages": [
