@@ -2,50 +2,50 @@
   {
     "username": "jostos",
     "division": 1,
-    "totalPoints": 25,
+    "totalPoints": 42,
     "stages": [
       25,
-      0
+      17
     ]
   },
   {
     "username": "tomagotchi",
     "division": 1,
-    "totalPoints": 20,
+    "totalPoints": 32,
     "stages": [
       20,
-      0
+      12
     ]
   },
   {
     "username": "JuanDav111__",
     "division": 1,
-    "totalPoints": 17,
+    "totalPoints": 31,
     "stages": [
       17,
-      0
+      14
+    ]
+  },
+  {
+    "username": "dani_iel",
+    "division": 1,
+    "totalPoints": 25,
+    "stages": [
+      0,
+      25
     ]
   },
   {
     "username": "Anfelesan",
     "division": 1,
-    "totalPoints": 0,
+    "totalPoints": 20,
     "stages": [
       0,
-      0
+      20
     ]
   },
   {
     "username": "Casala",
-    "division": 1,
-    "totalPoints": 0,
-    "stages": [
-      0,
-      0
-    ]
-  },
-  {
-    "username": "dani_iel",
     "division": 1,
     "totalPoints": 0,
     "stages": [
@@ -65,55 +65,91 @@
   {
     "username": "crisleoc",
     "division": 2,
-    "totalPoints": 25,
+    "totalPoints": 45,
     "stages": [
       25,
-      0
+      20
     ]
   },
   {
     "username": "ivant",
     "division": 2,
-    "totalPoints": 20,
+    "totalPoints": 37,
     "stages": [
       20,
-      0
-    ]
-  },
-  {
-    "username": "tklmkn",
-    "division": 2,
-    "totalPoints": 17,
-    "stages": [
-      17,
-      0
-    ]
-  },
-  {
-    "username": "DABBinho",
-    "division": 2,
-    "totalPoints": 14,
-    "stages": [
-      14,
-      0
+      17
     ]
   },
   {
     "username": "javvargasme",
     "division": 2,
-    "totalPoints": 12,
+    "totalPoints": 37,
     "stages": [
       12,
-      0
+      25
+    ]
+  },
+  {
+    "username": "tklmkn",
+    "division": 2,
+    "totalPoints": 31,
+    "stages": [
+      17,
+      14
+    ]
+  },
+  {
+    "username": "DABBinho",
+    "division": 2,
+    "totalPoints": 23,
+    "stages": [
+      14,
+      9
     ]
   },
   {
     "username": "Asternold",
     "division": 2,
-    "totalPoints": 10,
+    "totalPoints": 20,
     "stages": [
       10,
-      0
+      10
+    ]
+  },
+  {
+    "username": "AlexDemon",
+    "division": 2,
+    "totalPoints": 19,
+    "stages": [
+      7,
+      12
+    ]
+  },
+  {
+    "username": "julropi25",
+    "division": 2,
+    "totalPoints": 15,
+    "stages": [
+      8,
+      7
+    ]
+  },
+  {
+    "username": "rcoon084",
+    "division": 2,
+    "totalPoints": 12,
+    "stages": [
+      4,
+      8
+    ]
+  },
+  {
+    "username": "jugilor",
+    "division": 2,
+    "totalPoints": 10,
+    "stages": [
+      4,
+      6
     ]
   },
   {
@@ -122,24 +158,6 @@
     "totalPoints": 9,
     "stages": [
       9,
-      0
-    ]
-  },
-  {
-    "username": "julropi25",
-    "division": 2,
-    "totalPoints": 8,
-    "stages": [
-      8,
-      0
-    ]
-  },
-  {
-    "username": "AlexDemon",
-    "division": 2,
-    "totalPoints": 7,
-    "stages": [
-      7,
       0
     ]
   },
@@ -154,24 +172,6 @@
   },
   {
     "username": "Dutano",
-    "division": 2,
-    "totalPoints": 4,
-    "stages": [
-      4,
-      0
-    ]
-  },
-  {
-    "username": "jugilor",
-    "division": 2,
-    "totalPoints": 4,
-    "stages": [
-      4,
-      0
-    ]
-  },
-  {
-    "username": "rcoon084",
     "division": 2,
     "totalPoints": 4,
     "stages": [

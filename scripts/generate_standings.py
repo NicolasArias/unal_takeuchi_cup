@@ -15,10 +15,14 @@ from urllib.request import Request, urlopen
 SCRIPT_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = SCRIPT_DIR.parent
 ATCODER_BASE_URL = "https://atcoder.jp/contests"
+CREDENTIALS_PATH = SCRIPT_DIR / "credentials.json"
 
 
-def fetch_json(url: str) -> object:
-    request = Request(url, headers={"User-Agent": "unal-takeuchi-cup-standings/1.0"})
+def fetch_json(url: str, cookie: str | None = None) -> object:
+    headers = {"User-Agent": "unal-takeuchi-cup-standings/1.0"}
+    if cookie:
+        headers["Cookie"] = cookie
+    request = Request(url, headers=headers)
     with urlopen(request, timeout=30) as response:
         return json.load(response)
 
@@ -66,6 +70,34 @@ def fetch_contest_results(contest_id: str) -> list[dict]:
     return [row for row in results if isinstance(row, dict)]
 
 
+def fetch_provisional_standings(contest_id: str, cookie: str | None) -> list[dict]:
+    if cookie is None:
+        return []
+
+    standings_url = f"{ATCODER_BASE_URL}/{contest_id}/standings/json"
+    standings = fetch_json(standings_url, cookie)
+    if not isinstance(standings, dict) or not isinstance(standings.get("StandingsData"), list):
+        raise ValueError(f"Unexpected standings response for {contest_id}")
+
+    return [
+        {**row, "Place": row.get("Rank")}
+        for row in standings["StandingsData"]
+        if isinstance(row, dict)
+    ]
+
+
+def load_cookie() -> str | None:
+    if not CREDENTIALS_PATH.is_file():
+        return None
+
+    with CREDENTIALS_PATH.open(encoding="utf-8") as credentials_file:
+        credentials = json.load(credentials_file)
+    cookie = credentials.get("cookie") if isinstance(credentials, dict) else None
+    if not isinstance(cookie, str) or not cookie:
+        raise ValueError(f"Credentials file must contain a cookie: {CREDENTIALS_PATH}")
+    return cookie
+
+
 def load_data(data_path: Path) -> tuple[list[str], list[int], list[dict]]:
     with data_path.open(encoding="utf-8") as data_file:
         data = json.load(data_file)
@@ -108,6 +140,7 @@ def build_standings(data_path: Path) -> list[dict]:
         participant_by_handle[normalized_handle] = entry
 
     now = datetime.now(timezone.utc)
+    cookie = load_cookie()
     completed_contests = []
 
     for contest_id in contests:
@@ -116,6 +149,13 @@ def build_standings(data_path: Path) -> list[dict]:
                 print(f"Skipping future contest {contest_id}")
                 continue
             results = fetch_contest_results(contest_id)
+            if not results:
+                results = fetch_provisional_standings(contest_id, cookie)
+                if results:
+                    print(f"Using provisional standings for {contest_id}")
+                else:
+                    print(f"Skipping {contest_id}: results are not published yet")
+                    continue
         except (HTTPError, URLError, TimeoutError, ValueError) as error:
             print(f"Skipping {contest_id}: {error}", file=sys.stderr)
             continue
