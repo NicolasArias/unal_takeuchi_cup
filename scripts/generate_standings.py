@@ -4,6 +4,7 @@ from __future__ import annotations
 
 import argparse
 import json
+import os
 import sys
 from datetime import datetime, timezone
 from html.parser import HTMLParser
@@ -15,7 +16,7 @@ from urllib.request import Request, urlopen
 SCRIPT_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = SCRIPT_DIR.parent
 ATCODER_BASE_URL = "https://atcoder.jp/contests"
-CREDENTIALS_PATH = SCRIPT_DIR / "credentials.json"
+ENV_PATH = SCRIPT_DIR / ".env"
 
 
 def fetch_json(url: str, cookie: str | None = None) -> object:
@@ -87,15 +88,19 @@ def fetch_provisional_standings(contest_id: str, cookie: str | None) -> list[dic
 
 
 def load_cookie() -> str | None:
-    if not CREDENTIALS_PATH.is_file():
+    cookie = os.getenv("ATCODER_COOKIE")
+    if cookie:
+        return cookie
+
+    if not ENV_PATH.is_file():
         return None
 
-    with CREDENTIALS_PATH.open(encoding="utf-8") as credentials_file:
-        credentials = json.load(credentials_file)
-    cookie = credentials.get("cookie") if isinstance(credentials, dict) else None
-    if not isinstance(cookie, str) or not cookie:
-        raise ValueError(f"Credentials file must contain a cookie: {CREDENTIALS_PATH}")
-    return cookie
+    for line in ENV_PATH.read_text(encoding="utf-8").splitlines():
+        name, separator, value = line.partition("=")
+        if separator and name.strip() == "ATCODER_COOKIE":
+            cookie = value.strip().strip('"').strip("'")
+            return cookie or None
+    return None
 
 
 def load_data(data_path: Path) -> tuple[list[str], list[int], list[dict]]:
