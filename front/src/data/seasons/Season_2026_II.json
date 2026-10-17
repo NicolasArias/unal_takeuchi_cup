@@ -4,7 +4,8 @@
     "division": 1,
     "totalPoints": 25,
     "stages": [
-      25
+      25,
+      0
     ]
   },
   {
@@ -12,7 +13,8 @@
     "division": 1,
     "totalPoints": 20,
     "stages": [
-      20
+      20,
+      0
     ]
   },
   {
@@ -20,7 +22,8 @@
     "division": 1,
     "totalPoints": 17,
     "stages": [
-      17
+      17,
+      0
     ]
   },
   {
@@ -28,6 +31,7 @@
     "division": 1,
     "totalPoints": 0,
     "stages": [
+      0,
       0
     ]
   },
@@ -36,6 +40,7 @@
     "division": 1,
     "totalPoints": 0,
     "stages": [
+      0,
       0
     ]
   },
@@ -44,6 +49,7 @@
     "division": 1,
     "totalPoints": 0,
     "stages": [
+      0,
       0
     ]
   },
@@ -52,6 +58,7 @@
     "division": 1,
     "totalPoints": 0,
     "stages": [
+      0,
       0
     ]
   },
@@ -60,7 +67,8 @@
     "division": 2,
     "totalPoints": 25,
     "stages": [
-      25
+      25,
+      0
     ]
   },
   {
@@ -68,7 +76,8 @@
     "division": 2,
     "totalPoints": 20,
     "stages": [
-      20
+      20,
+      0
     ]
   },
   {
@@ -76,7 +85,8 @@
     "division": 2,
     "totalPoints": 17,
     "stages": [
-      17
+      17,
+      0
     ]
   },
   {
@@ -84,7 +94,8 @@
     "division": 2,
     "totalPoints": 14,
     "stages": [
-      14
+      14,
+      0
     ]
   },
   {
@@ -92,7 +103,8 @@
     "division": 2,
     "totalPoints": 12,
     "stages": [
-      12
+      12,
+      0
     ]
   },
   {
@@ -100,7 +112,8 @@
     "division": 2,
     "totalPoints": 10,
     "stages": [
-      10
+      10,
+      0
     ]
   },
   {
@@ -108,7 +121,8 @@
     "division": 2,
     "totalPoints": 9,
     "stages": [
-      9
+      9,
+      0
     ]
   },
   {
@@ -116,7 +130,8 @@
     "division": 2,
     "totalPoints": 8,
     "stages": [
-      8
+      8,
+      0
     ]
   },
   {
@@ -124,7 +139,8 @@
     "division": 2,
     "totalPoints": 7,
     "stages": [
-      7
+      7,
+      0
     ]
   },
   {
@@ -132,7 +148,8 @@
     "division": 2,
     "totalPoints": 6,
     "stages": [
-      6
+      6,
+      0
     ]
   },
   {
@@ -140,7 +157,8 @@
     "division": 2,
     "totalPoints": 4,
     "stages": [
-      4
+      4,
+      0
     ]
   },
   {
@@ -148,7 +166,8 @@
     "division": 2,
     "totalPoints": 4,
     "stages": [
-      4
+      4,
+      0
     ]
   },
   {
@@ -156,7 +175,8 @@
     "division": 2,
     "totalPoints": 4,
     "stages": [
-      4
+      4,
+      0
     ]
   },
   {
@@ -164,6 +184,7 @@
     "division": 2,
     "totalPoints": 0,
     "stages": [
+      0,
       0
     ]
   },
@@ -172,6 +193,7 @@
     "division": 2,
     "totalPoints": 0,
     "stages": [
+      0,
       0
     ]
   },
@@ -180,6 +202,7 @@
     "division": 2,
     "totalPoints": 0,
     "stages": [
+      0,
       0
     ]
   },
@@ -188,6 +211,7 @@
     "division": 2,
     "totalPoints": 0,
     "stages": [
+      0,
       0
     ]
   },
@@ -196,6 +220,7 @@
     "division": 2,
     "totalPoints": 0,
     "stages": [
+      0,
       0
     ]
   },
@@ -204,6 +229,7 @@
     "division": 2,
     "totalPoints": 0,
     "stages": [
+      0,
       0
     ]
   },
@@ -212,6 +238,7 @@
     "division": 2,
     "totalPoints": 0,
     "stages": [
+      0,
       0
     ]
   },
@@ -220,6 +247,7 @@
     "division": 2,
     "totalPoints": 0,
     "stages": [
+      0,
       0
     ]
   },
@@ -228,6 +256,7 @@
     "division": 2,
     "totalPoints": 0,
     "stages": [
+      0,
       0
     ]
   }
