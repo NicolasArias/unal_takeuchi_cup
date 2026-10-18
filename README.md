@@ -73,17 +73,23 @@ scripts/2027_I/data.json
 
 The `data.json` file must contain the contest IDs, point distribution, and participants for that season. Copy the structure of `scripts/2026_II/data.json` and update its values.
 
-No workflow or frontend registry change is required. The scheduled GitHub Action automatically finds the latest valid season folder, and the frontend automatically discovers the generated JSON file in `front/src/data/seasons/`.
+No workflow or frontend registry change is required. The standings generator automatically finds the latest valid season folder, and the frontend automatically discovers the generated JSON file in `front/src/data/seasons/`.
 
 ## Generate Season Standings
 
 From the repository root, run:
 
 ```powershell
-python scripts/generate_standings.py 2026_II
+python scripts/generate_standings.py
 ```
 
-The required stage argument selects `scripts/<stage>/data.json`, fetches each AtCoder contest's public start time and results, and writes:
+The optional stage argument selects `scripts/<stage>/data.json`. When omitted, the generator automatically selects the latest season folder containing `data.json`. It fetches each AtCoder contest's public start time and results, and writes:
+
+To generate a specific season, pass its stage explicitly:
+
+```powershell
+python scripts/generate_standings.py 2026_II
+```
 
 ```text
 front/src/data/seasons/Season_2026_II.json
@@ -101,9 +107,9 @@ After generating a new season manually, run the frontend lint and build commands
 
 ## Scheduled Standings Updates
 
-The workflow `.github/workflows/update_season_standings.yml` finds the latest season folder containing `data.json` and runs its generator every Saturday and Sunday at 07:30, 08:00, 08:30, and 08:45 in UTC-5. GitHub Actions schedules use UTC, so the workflow uses 12:30, 13:00, 13:30, and 13:45 UTC.
+The [cron-job.org](https://cron-job.org/) job triggers `.github/workflows/update_season_standings.yml` using the `workflow_dispatch` event. The configured cron expression, `*/10 7-9 * * */6`, runs every 10 minutes during hours 07:00 through 09:59 on the configured day interval. The generator finds the latest season folder containing `data.json`, generates its standings, and commits only changed output.
 
-The workflow can also be started manually from the repository's **Actions** tab. It commits and pushes the matching `Season_<stage>.json` only when the generated standings change. Scheduled workflows can be delayed slightly by GitHub during periods of high demand.
+The workflow can also be started manually from the repository's **Actions** tab. It commits and pushes the matching `Season_<stage>.json` only when the generated standings change.
 
 ## Updating Participants
 

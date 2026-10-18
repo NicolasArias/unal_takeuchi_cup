@@ -5,6 +5,7 @@ from __future__ import annotations
 import argparse
 import json
 import os
+import re
 import sys
 from datetime import datetime, timezone
 from html.parser import HTMLParser
@@ -17,6 +18,8 @@ SCRIPT_DIR = Path(__file__).resolve().parent
 PROJECT_ROOT = SCRIPT_DIR.parent
 ATCODER_BASE_URL = "https://atcoder.jp/contests"
 ENV_PATH = SCRIPT_DIR / ".env"
+STAGE_ORDER = {"I": 1, "II": 2, "III": 3}
+STAGE_PATTERN = re.compile(r"(?P<year>\d{4})_(?P<stage>I|II|III)")
 
 
 def fetch_json(url: str, cookie: str | None = None) -> object:
@@ -121,6 +124,24 @@ def load_data(data_path: Path) -> tuple[list[str], list[int], list[dict]]:
     return contests, points, participants
 
 
+def find_latest_stage() -> str:
+    candidates = []
+    for directory in SCRIPT_DIR.iterdir():
+        match = STAGE_PATTERN.fullmatch(directory.name)
+        if directory.is_dir() and match and (directory / "data.json").is_file():
+            candidates.append(
+                (
+                    int(match.group("year")),
+                    STAGE_ORDER[match.group("stage")],
+                    directory.name,
+                )
+            )
+
+    if not candidates:
+        raise ValueError("No season folders matching YYYY_I, YYYY_II, or YYYY_III were found")
+    return max(candidates)[2]
+
+
 def build_standings(data_path: Path) -> list[dict]:
     contests, points, participant_data = load_data(data_path)
     participants = []
@@ -212,14 +233,20 @@ def main() -> None:
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument(
         "stage",
-        help="Season folder under scripts and suffix for the output file (for example: 2026_II)",
+        nargs="?",
+        help="Season folder under scripts (defaults to the latest season)",
     )
     args = parser.parse_args()
 
-    data_path = SCRIPT_DIR / args.stage / "data.json"
-    output_path = PROJECT_ROOT / "front" / "src" / "data" / "seasons" / f"Season_{args.stage}.json"
+    try:
+        stage = args.stage or find_latest_stage()
+    except ValueError as error:
+        parser.error(str(error))
+
+    data_path = SCRIPT_DIR / stage / "data.json"
+    output_path = PROJECT_ROOT / "front" / "src" / "data" / "seasons" / f"Season_{stage}.json"
     if not data_path.is_file():
-        parser.error(f"No data file found for stage '{args.stage}': {data_path}")
+        parser.error(f"No data file found for stage '{stage}': {data_path}")
 
     standings = build_standings(data_path)
     output_path.parent.mkdir(parents=True, exist_ok=True)
