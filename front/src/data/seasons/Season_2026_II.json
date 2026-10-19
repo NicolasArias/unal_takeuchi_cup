@@ -2,28 +2,28 @@
   {
     "username": "jostos",
     "division": 1,
-    "totalPoints": 42,
+    "totalPoints": 39,
     "stages": [
       25,
-      17
+      14
     ]
   },
   {
     "username": "tomagotchi",
     "division": 1,
-    "totalPoints": 32,
+    "totalPoints": 30,
     "stages": [
       20,
-      12
+      10
     ]
   },
   {
     "username": "JuanDav111__",
     "division": 1,
-    "totalPoints": 31,
+    "totalPoints": 29,
     "stages": [
       17,
-      14
+      12
     ]
   },
   {
@@ -36,12 +36,21 @@
     ]
   },
   {
-    "username": "Anfelesan",
+    "username": "NoxBorealis",
     "division": 1,
     "totalPoints": 20,
     "stages": [
       0,
       20
+    ]
+  },
+  {
+    "username": "Anfelesan",
+    "division": 1,
+    "totalPoints": 17,
+    "stages": [
+      0,
+      17
     ]
   },
   {
