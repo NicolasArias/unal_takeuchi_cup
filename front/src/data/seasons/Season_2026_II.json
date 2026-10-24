@@ -80,6 +80,16 @@
     ]
   },
   {
+    "username": "ivant",
+    "division": 2,
+    "totalPoints": 62,
+    "stages": [
+      20,
+      17,
+      25
+    ]
+  },
+  {
     "username": "javvargasme",
     "division": 2,
     "totalPoints": 57,
@@ -90,26 +100,6 @@
     ]
   },
   {
-    "username": "tklmkn",
-    "division": 2,
-    "totalPoints": 56,
-    "stages": [
-      17,
-      14,
-      25
-    ]
-  },
-  {
-    "username": "ivant",
-    "division": 2,
-    "totalPoints": 54,
-    "stages": [
-      20,
-      17,
-      17
-    ]
-  },
-  {
     "username": "crisleoc",
     "division": 2,
     "totalPoints": 52,
@@ -117,6 +107,16 @@
       25,
       20,
       7
+    ]
+  },
+  {
+    "username": "tklmkn",
+    "division": 2,
+    "totalPoints": 48,
+    "stages": [
+      17,
+      14,
+      17
     ]
   },
   {
