@@ -88,6 +88,17 @@
     ]
   },
   {
+    "username": "crisleoc",
+    "division": 2,
+    "totalPoints": 77,
+    "stages": [
+      25,
+      20,
+      25,
+      7
+    ]
+  },
+  {
     "username": "ivant",
     "division": 2,
     "totalPoints": 71,
@@ -107,17 +118,6 @@
       25,
       17,
       17
-    ]
-  },
-  {
-    "username": "crisleoc",
-    "division": 2,
-    "totalPoints": 70,
-    "stages": [
-      25,
-      20,
-      25,
-      0
     ]
   },
   {
