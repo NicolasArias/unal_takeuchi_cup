@@ -13,11 +13,22 @@
   {
     "username": "jostos",
     "division": 1,
-    "totalPoints": 68,
+    "totalPoints": 65,
     "stages": [
       25,
       14,
       12,
+      14
+    ]
+  },
+  {
+    "username": "JuanDav111__",
+    "division": 1,
+    "totalPoints": 60,
+    "stages": [
+      17,
+      12,
+      14,
       17
     ]
   },
@@ -30,17 +41,6 @@
       17,
       17,
       25
-    ]
-  },
-  {
-    "username": "JuanDav111__",
-    "division": 1,
-    "totalPoints": 43,
-    "stages": [
-      17,
-      12,
-      14,
-      0
     ]
   },
   {
@@ -88,69 +88,69 @@
     ]
   },
   {
+    "username": "crisleoc",
+    "division": 2,
+    "totalPoints": 80,
+    "stages": [
+      25,
+      20,
+      25,
+      10
+    ]
+  },
+  {
     "username": "ivant",
     "division": 2,
-    "totalPoints": 82,
+    "totalPoints": 77,
     "stages": [
       20,
       17,
       20,
-      25
+      20
     ]
   },
   {
     "username": "javvargasme",
     "division": 2,
-    "totalPoints": 71,
+    "totalPoints": 68,
     "stages": [
       12,
       25,
       17,
-      17
-    ]
-  },
-  {
-    "username": "crisleoc",
-    "division": 2,
-    "totalPoints": 70,
-    "stages": [
-      25,
-      20,
-      25,
-      0
+      14
     ]
   },
   {
     "username": "tklmkn",
     "division": 2,
-    "totalPoints": 65,
+    "totalPoints": 62,
     "stages": [
       17,
       14,
       14,
-      20
-    ]
-  },
-  {
-    "username": "Asternold",
-    "division": 2,
-    "totalPoints": 34,
-    "stages": [
-      10,
-      10,
-      0,
-      14
+      17
     ]
   },
   {
     "username": "DABBinho",
     "division": 2,
-    "totalPoints": 32,
+    "totalPoints": 57,
     "stages": [
       14,
       9,
       9,
-      0
+      25
+    ]
+  },
+  {
+    "username": "Asternold",
+    "division": 2,
+    "totalPoints": 32,
+    "stages": [
+      10,
+      10,
+      0,
+      12
     ]
   },
   {
@@ -167,34 +167,34 @@
   {
     "username": "jugilor",
     "division": 2,
-    "totalPoints": 24,
+    "totalPoints": 22,
     "stages": [
       4,
       4,
       7,
-      9
+      7
     ]
   },
   {
     "username": "julianfpo",
     "division": 2,
-    "totalPoints": 24,
+    "totalPoints": 22,
     "stages": [
       6,
       0,
       8,
-      10
+      8
     ]
   },
   {
     "username": "Santycr123",
     "division": 2,
-    "totalPoints": 24,
+    "totalPoints": 21,
     "stages": [
       0,
       0,
       12,
-      12
+      9
     ]
   },
   {
