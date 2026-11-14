@@ -120,6 +120,18 @@
     ]
   },
   {
+    "username": "crisleoc",
+    "division": 2,
+    "totalPoints": 90,
+    "stages": [
+      25,
+      20,
+      25,
+      10,
+      10
+    ]
+  },
+  {
     "username": "tklmkn",
     "division": 2,
     "totalPoints": 82,
@@ -129,18 +141,6 @@
       14,
       17,
       20
-    ]
-  },
-  {
-    "username": "crisleoc",
-    "division": 2,
-    "totalPoints": 80,
-    "stages": [
-      25,
-      20,
-      25,
-      10,
-      0
     ]
   },
   {
