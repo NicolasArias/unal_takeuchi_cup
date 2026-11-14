@@ -1,5 +1,17 @@
 [
   {
+    "username": "JuanDav111__",
+    "division": 1,
+    "totalPoints": 85,
+    "stages": [
+      17,
+      12,
+      14,
+      17,
+      25
+    ]
+  },
+  {
     "username": "jostos",
     "division": 1,
     "totalPoints": 82,
@@ -9,18 +21,6 @@
       12,
       14,
       17
-    ]
-  },
-  {
-    "username": "JuanDav111__",
-    "division": 1,
-    "totalPoints": 80,
-    "stages": [
-      17,
-      12,
-      14,
-      17,
-      20
     ]
   },
   {
@@ -74,13 +74,13 @@
   {
     "username": "sankiago",
     "division": 1,
-    "totalPoints": 25,
+    "totalPoints": 20,
     "stages": [
       0,
       0,
       0,
       0,
-      25
+      20
     ]
   },
   {
