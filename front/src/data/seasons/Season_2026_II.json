@@ -98,25 +98,13 @@
   {
     "username": "ivant",
     "division": 2,
-    "totalPoints": 97,
+    "totalPoints": 94,
     "stages": [
       20,
       17,
       20,
       20,
-      20
-    ]
-  },
-  {
-    "username": "javvargasme",
-    "division": 2,
-    "totalPoints": 93,
-    "stages": [
-      12,
-      25,
-      17,
-      14,
-      25
+      17
     ]
   },
   {
@@ -132,26 +120,38 @@
     ]
   },
   {
-    "username": "tklmkn",
+    "username": "javvargasme",
     "division": 2,
-    "totalPoints": 79,
+    "totalPoints": 88,
     "stages": [
+      12,
+      25,
       17,
       14,
-      14,
-      17,
-      17
+      20
     ]
   },
   {
     "username": "DABBinho",
     "division": 2,
-    "totalPoints": 71,
+    "totalPoints": 82,
     "stages": [
       14,
       9,
       9,
       25,
+      25
+    ]
+  },
+  {
+    "username": "tklmkn",
+    "division": 2,
+    "totalPoints": 76,
+    "stages": [
+      17,
+      14,
+      14,
+      17,
       14
     ]
   },
