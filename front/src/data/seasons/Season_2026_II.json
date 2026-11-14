@@ -146,13 +146,13 @@
   {
     "username": "DABBinho",
     "division": 2,
-    "totalPoints": 69,
+    "totalPoints": 71,
     "stages": [
       14,
       9,
       9,
       25,
-      12
+      14
     ]
   },
   {
@@ -168,18 +168,6 @@
     ]
   },
   {
-    "username": "rcoon084",
-    "division": 2,
-    "totalPoints": 26,
-    "stages": [
-      4,
-      8,
-      0,
-      0,
-      14
-    ]
-  },
-  {
     "username": "AlexDemon",
     "division": 2,
     "totalPoints": 25,
@@ -189,6 +177,18 @@
       6,
       0,
       0
+    ]
+  },
+  {
+    "username": "rcoon084",
+    "division": 2,
+    "totalPoints": 24,
+    "stages": [
+      4,
+      8,
+      0,
+      0,
+      12
     ]
   },
   {
