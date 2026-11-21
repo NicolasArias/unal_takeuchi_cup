@@ -106,14 +106,14 @@
   {
     "username": "ivant",
     "division": 2,
-    "totalPoints": 109,
+    "totalPoints": 106,
     "stages": [
       20,
       17,
       20,
       20,
       12,
-      20
+      17
     ]
   },
   {
@@ -130,42 +130,42 @@
     ]
   },
   {
-    "username": "javvargasme",
-    "division": 2,
-    "totalPoints": 102,
-    "stages": [
-      12,
-      25,
-      17,
-      14,
-      17,
-      17
-    ]
-  },
-  {
-    "username": "tklmkn",
-    "division": 2,
-    "totalPoints": 101,
-    "stages": [
-      17,
-      14,
-      14,
-      17,
-      14,
-      25
-    ]
-  },
-  {
     "username": "DABBinho",
     "division": 2,
-    "totalPoints": 89,
+    "totalPoints": 102,
     "stages": [
       14,
       9,
       9,
       25,
       20,
-      12
+      25
+    ]
+  },
+  {
+    "username": "javvargasme",
+    "division": 2,
+    "totalPoints": 99,
+    "stages": [
+      12,
+      25,
+      17,
+      14,
+      17,
+      14
+    ]
+  },
+  {
+    "username": "tklmkn",
+    "division": 2,
+    "totalPoints": 96,
+    "stages": [
+      17,
+      14,
+      14,
+      17,
+      14,
+      20
     ]
   },
   {
@@ -184,14 +184,14 @@
   {
     "username": "Santycr123",
     "division": 2,
-    "totalPoints": 35,
+    "totalPoints": 33,
     "stages": [
       0,
       0,
       12,
       9,
       0,
-      14
+      12
     ]
   },
   {
