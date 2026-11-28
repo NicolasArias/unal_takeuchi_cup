@@ -2,7 +2,7 @@
   {
     "username": "jostos",
     "division": 1,
-    "totalPoints": 140,
+    "totalPoints": 135,
     "stages": [
       25,
       14,
@@ -10,13 +10,13 @@
       14,
       25,
       25,
-      25
+      20
     ]
   },
   {
     "username": "JuanDav111__",
     "division": 1,
-    "totalPoints": 120,
+    "totalPoints": 125,
     "stages": [
       17,
       12,
@@ -24,7 +24,7 @@
       17,
       20,
       20,
-      20
+      25
     ]
   },
   {
@@ -112,20 +112,6 @@
     ]
   },
   {
-    "username": "ivant",
-    "division": 2,
-    "totalPoints": 126,
-    "stages": [
-      20,
-      17,
-      20,
-      20,
-      12,
-      17,
-      20
-    ]
-  },
-  {
     "username": "tklmkn",
     "division": 2,
     "totalPoints": 126,
@@ -140,9 +126,23 @@
     ]
   },
   {
+    "username": "ivant",
+    "division": 2,
+    "totalPoints": 120,
+    "stages": [
+      20,
+      17,
+      20,
+      20,
+      12,
+      17,
+      14
+    ]
+  },
+  {
     "username": "javvargasme",
     "division": 2,
-    "totalPoints": 113,
+    "totalPoints": 116,
     "stages": [
       12,
       25,
@@ -150,7 +150,7 @@
       14,
       17,
       14,
-      14
+      17
     ]
   },
   {
@@ -184,7 +184,7 @@
   {
     "username": "Asternold",
     "division": 2,
-    "totalPoints": 59,
+    "totalPoints": 62,
     "stages": [
       10,
       10,
@@ -192,7 +192,7 @@
       12,
       0,
       10,
-      17
+      20
     ]
   },
   {
